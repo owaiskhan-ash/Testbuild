@@ -22,6 +22,20 @@
     <span class="curtain__rule"></span>
   </div>
 
+  <!-- ============ FILM OVERLAYS ============ -->
+  <div class="letterbox letterbox--top" aria-hidden="true"></div>
+  <div class="letterbox letterbox--bottom" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <button class="sound" type="button" aria-pressed="false" aria-label="Turn ambient sound on" title="Ambient sound">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 9.500h3.500L12 6v12l-4.5-3.500H4z" />
+      <path class="sound__wave" d="M15 9.200a4 4 0 0 1 0 5.600M17.3 7a7 7 0 0 1 0 10" />
+      <path class="sound__mute" d="M15.5 9.500l5 5M20.5 9.500l-5 5" />
+    </svg>
+  </button>
+
   <!-- ============ NAV ============ -->
   <header class="nav">
     <div class="wrap nav__inner">
@@ -59,22 +73,46 @@
         <div class="scene__zoom">
           <div class="layer layer--back" data-depth="0.1">
             <img src="assets/images/hero-back.png" alt="" width="1312" height="816" />
+            <span class="rays"></span>
           </div>
           <div class="layer layer--clouds" data-depth="0.22">
             <img class="cloud cloud--a" src="assets/images/cloud.png" alt="" width="720" height="311" />
             <img class="cloud cloud--b" src="assets/images/cloud.png" alt="" width="720" height="311" />
+            <span class="flock">
+              <svg class="bird bird--1" viewBox="0 0 24 12"><path d="M1 8Q6 1 12 7Q18 1 23 8" /></svg>
+              <svg class="bird bird--2" viewBox="0 0 24 12"><path d="M1 8Q6 1 12 7Q18 1 23 8" /></svg>
+              <svg class="bird bird--3" viewBox="0 0 24 12"><path d="M1 8Q6 1 12 7Q18 1 23 8" /></svg>
+              <svg class="bird bird--4" viewBox="0 0 24 12"><path d="M1 8Q6 1 12 7Q18 1 23 8" /></svg>
+            </span>
           </div>
           <div class="layer layer--water" data-depth="0.3">
             <span class="shimmer shimmer--a"></span>
             <span class="shimmer shimmer--b"></span>
           </div>
           <div class="layer layer--boats" data-depth="0.45">
-            <span class="boat boat--1"><img src="assets/images/boat.png" alt="" width="260" height="313" /></span>
-            <span class="boat boat--2"><img src="assets/images/boat.png" alt="" width="260" height="313" /></span>
-            <span class="boat boat--3"><img src="assets/images/boat.png" alt="" width="260" height="313" /></span>
+            <span class="mist mist--a"></span>
+            <span class="mist mist--b"></span>
+            <span class="boat boat--1">
+              <i class="boat__wake"></i>
+              <img class="boat__ref" src="assets/images/boat.png" alt="" width="260" height="313" />
+              <img class="boat__img" src="assets/images/boat.png" alt="" width="260" height="313" />
+            </span>
+            <span class="boat boat--2">
+              <i class="boat__wake"></i>
+              <img class="boat__ref" src="assets/images/boat.png" alt="" width="260" height="313" />
+              <img class="boat__img" src="assets/images/boat.png" alt="" width="260" height="313" />
+            </span>
+            <span class="boat boat--3">
+              <i class="boat__wake"></i>
+              <img class="boat__ref" src="assets/images/boat.png" alt="" width="260" height="313" />
+              <img class="boat__img" src="assets/images/boat.png" alt="" width="260" height="313" />
+            </span>
           </div>
+          <div class="scene__dusk"></div>
           <div class="layer layer--front" data-depth="0.8">
+            <span class="smoke"><i></i><i></i><i></i><i></i></span>
             <img src="assets/images/hero-front.png" alt="" width="1312" height="816" />
+            <img class="front-dusk" src="assets/images/hero-front-dusk.png" alt="" width="1312" height="816" loading="lazy" />
           </div>
         </div>
         <img class="scene__foam" src="assets/images/hero-foam.png" alt="" width="1312" height="131" />
@@ -90,9 +128,12 @@
     </section>
 
     <!-- ============ CRAFTS (dark) ============ -->
+    <div class="pin">
     <section class="crafts" id="crafts">
+      <img class="wipe wipe--top" src="assets/images/hero-foam.png" alt="" width="1312" height="131" aria-hidden="true" />
+      <img class="wipe wipe--bottom" src="assets/images/hero-foam.png" alt="" width="1312" height="131" aria-hidden="true" />
       <div class="wrap">
-        <h2 class="crafts__title" data-reveal>Free-Lusks</h2>
+        <h2 class="crafts__title" data-reveal="title"><span class="ink-line">Free-Lusks</span></h2>
         <p class="crafts__sub" data-reveal style="--d:1">Carefully picked, handmade and local</p>
 
         <div class="cards">
@@ -131,6 +172,7 @@
         </div>
       </div>
     </section>
+    </div>
 
     <!-- ============ PLANTS + STORY (cream) ============ -->
     <section class="cream">
@@ -160,20 +202,24 @@
         </div>
 
         <div class="story" id="story">
-          <div class="story__left" data-reveal>
-            <h2 class="story__title">
+          <div class="story__left">
+            <h2 class="story__title" data-reveal="title">
               <svg class="story__flourish" viewBox="0 0 120 60" aria-hidden="true">
-                <path d="M4 44c18-30 46-40 60-30s-6 30-20 22 10-34 40-30 30 22 20 30" />
-                <path d="M30 14c14-12 34-12 44-4M70 30c12-10 30-12 44-6" />
+                <path d="M4 44c18-30 46-40 60-30s-6 30-20 22 10-34 40-30 30 22 20 30" pathLength="1" />
+                <path d="M30 14c14-12 34-12 44-4M70 30c12-10 30-12 44-6" pathLength="1" />
               </svg>
-              <span class="story__t1">Lou <small>of</small></span>
-              <span class="story__t2">Sortiduian</span>
+              <span class="story__t1 ink-line">Lou <small>of</small></span>
+              <span class="story__t2 ink-line">Sortiduian</span>
             </h2>
-            <p>Every piece begins in the hands of a maker we know by name. We travel from workshop to workshop, gathering small batches of honest goods, so that each one arrives at your door with its story intact.</p>
+            <p data-reveal style="--d:4">Every piece begins in the hands of a maker we know by name. We travel from workshop to workshop, gathering small batches of honest goods, so that each one arrives at your door with its story intact.</p>
           </div>
 
           <div class="story__art" data-reveal="zoom" style="--d:1">
-            <img src="assets/images/artisans.png" alt="Two artisans talking at a workbench" width="640" height="513" />
+            <div class="duo">
+              <span class="duo__blob duo__blob--teal" data-par="-16"></span>
+              <span class="duo__blob duo__blob--peach" data-par="-7"></span>
+              <img class="duo__people" data-par="9" src="assets/images/artisans-people.png" alt="Two artisans talking at a workbench" width="640" height="606" />
+            </div>
           </div>
 
           <div class="story__right" data-reveal style="--d:2">
@@ -193,7 +239,7 @@
 
             <form class="signup" onsubmit="return false">
               <button class="signup__btn" type="submit" aria-label="Subscribe">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l2.3 5.2 5.7.600-4.3 3.8 1.3 5.6-5-3-5 3 1.3-5.600L4 9.800l5.7-.600z" /></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l2.3 5.2 5.7.6-4.3 3.8 1.3 5.6-5-3-5 3 1.3-5.600L4 9.800l5.7-.600z" /></svg>
               </button>
               <label class="signup__field signup__field--select">
                 <span class="sr-only">Topic</span>
