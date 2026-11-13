@@ -6,8 +6,21 @@
   <title>Artisan — Corden with ouy Artisans</title>
   <meta name="description" content="Artisan — a retro, hand-illustrated landing page for handmade goods and the people who make them." />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    /* Flag JS support before first paint; skip the opening curtain on repeat views this session. */
+    (function (d) {
+      d.classList.add('js');
+      try { if (sessionStorage.getItem('artisan-intro')) d.classList.add('no-intro'); } catch (e) {}
+    })(document.documentElement);
+  </script>
 </head>
 <body>
+
+  <!-- ============ OPENING CURTAIN ============ -->
+  <div class="curtain" aria-hidden="true">
+    <span class="curtain__logo">Artisan</span>
+    <span class="curtain__rule"></span>
+  </div>
 
   <!-- ============ NAV ============ -->
   <header class="nav">
@@ -41,11 +54,36 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero">
+      <!-- layered scene: back plate, drifting clouds, water shimmer, boats, foreground island -->
+      <div class="scene" aria-hidden="true">
+        <div class="scene__zoom">
+          <div class="layer layer--back" data-depth="0.1">
+            <img src="assets/images/hero-back.png" alt="" width="1312" height="816" />
+          </div>
+          <div class="layer layer--clouds" data-depth="0.22">
+            <img class="cloud cloud--a" src="assets/images/cloud.png" alt="" width="720" height="311" />
+            <img class="cloud cloud--b" src="assets/images/cloud.png" alt="" width="720" height="311" />
+          </div>
+          <div class="layer layer--water" data-depth="0.3">
+            <span class="shimmer shimmer--a"></span>
+            <span class="shimmer shimmer--b"></span>
+          </div>
+          <div class="layer layer--boats" data-depth="0.45">
+            <span class="boat boat--1"><img src="assets/images/boat.png" alt="" width="260" height="313" /></span>
+            <span class="boat boat--2"><img src="assets/images/boat.png" alt="" width="260" height="313" /></span>
+            <span class="boat boat--3"><img src="assets/images/boat.png" alt="" width="260" height="313" /></span>
+          </div>
+          <div class="layer layer--front" data-depth="0.8">
+            <img src="assets/images/hero-front.png" alt="" width="1312" height="816" />
+          </div>
+        </div>
+        <img class="scene__foam" src="assets/images/hero-foam.png" alt="" width="1312" height="131" />
+      </div>
       <div class="wrap hero__inner">
         <h1 class="hero__title">
-          <span class="hero__l1">Corden</span>
-          <span class="hero__l2">with ouy</span>
-          <span class="hero__l3">Artisans</span>
+          <span class="hero__line hero__l1"><span>Corden</span></span>
+          <span class="hero__line hero__l2"><span>with ouy</span></span>
+          <span class="hero__line hero__l3"><span>Artisans</span></span>
         </h1>
         <a class="btn" href="#crafts">Discover More</a>
       </div>
@@ -54,11 +92,11 @@
     <!-- ============ CRAFTS (dark) ============ -->
     <section class="crafts" id="crafts">
       <div class="wrap">
-        <h2 class="crafts__title">Free-Lusks</h2>
-        <p class="crafts__sub">Carefully picked, handmade and local</p>
+        <h2 class="crafts__title" data-reveal>Free-Lusks</h2>
+        <p class="crafts__sub" data-reveal style="--d:1">Carefully picked, handmade and local</p>
 
         <div class="cards">
-          <article class="card">
+          <article class="card" data-reveal style="--d:1">
             <a class="card__media" href="#plants">
               <img src="assets/images/card-botanicals.png" alt="Banana, apple, palm frond and flower illustration" width="800" height="537" />
               <span class="card__corner" aria-hidden="true"><i></i></span>
@@ -69,7 +107,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card" data-reveal style="--d:2">
             <a class="card__media" href="#plants">
               <img src="assets/images/card-tools.png" alt="Wooden tool with chili peppers illustration" width="800" height="537" />
               <span class="card__corner" aria-hidden="true"><i></i></span>
@@ -80,7 +118,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card" data-reveal style="--d:3">
             <a class="card__media" href="#plants">
               <img src="assets/images/card-leather.png" alt="Handcrafted leather clog illustration" width="800" height="537" />
               <span class="card__corner" aria-hidden="true"><i></i></span>
@@ -99,22 +137,22 @@
       <div class="wrap">
 
         <div class="badges" id="plants">
-          <a class="badge" href="#story">
+          <a class="badge" data-reveal="stamp" style="--d:0" href="#story">
             <span class="badge__art"><img src="assets/images/plant-grass.png" alt="Grass plant in a terracotta pot" width="640" height="631" /></span>
             <span class="badge__name">Wild Fern<br />Terracotta Planter</span>
             <span class="badge__price">$ 32 +</span>
           </a>
-          <a class="badge" href="#story">
+          <a class="badge" data-reveal="stamp" style="--d:1" href="#story">
             <span class="badge__art"><img src="assets/images/plant-round-pot.png" alt="Small plant in a round clay pot" width="640" height="630" /></span>
             <span class="badge__name">Artisan Round<br />Bowl Pot</span>
             <span class="badge__price">$ 27 +</span>
           </a>
-          <a class="badge" href="#story">
+          <a class="badge" data-reveal="stamp" style="--d:2" href="#story">
             <span class="badge__art"><img src="assets/images/plant-pots.png" alt="Two terracotta pots, one with a plant" width="640" height="639" /></span>
             <span class="badge__name">Garden Jar<br />&amp; Seedling Set</span>
             <span class="badge__price">$ 21 +</span>
           </a>
-          <a class="badge" href="#story">
+          <a class="badge" data-reveal="stamp" style="--d:3" href="#story">
             <span class="badge__art"><img src="assets/images/plant-still-life.png" alt="Plant, glass bottle and bulbs still life" width="640" height="630" /></span>
             <span class="badge__name">Apothecary<br />Workbench Kit</span>
             <span class="badge__price">$ 38 +</span>
@@ -122,7 +160,7 @@
         </div>
 
         <div class="story" id="story">
-          <div class="story__left">
+          <div class="story__left" data-reveal>
             <h2 class="story__title">
               <svg class="story__flourish" viewBox="0 0 120 60" aria-hidden="true">
                 <path d="M4 44c18-30 46-40 60-30s-6 30-20 22 10-34 40-30 30 22 20 30" />
@@ -134,11 +172,11 @@
             <p>Every piece begins in the hands of a maker we know by name. We travel from workshop to workshop, gathering small batches of honest goods, so that each one arrives at your door with its story intact.</p>
           </div>
 
-          <div class="story__art">
+          <div class="story__art" data-reveal="zoom" style="--d:1">
             <img src="assets/images/artisans.png" alt="Two artisans talking at a workbench" width="640" height="513" />
           </div>
 
-          <div class="story__right">
+          <div class="story__right" data-reveal style="--d:2">
             <p>Two generations share one bench in our studio. Old techniques are passed along by hand, new ideas are welcomed with a grin, and nothing leaves the table until both agree it is ready. That patience is what you feel when you hold the finished piece — made to be used, loved and kept for years.</p>
 
             <div class="trust">
@@ -174,7 +212,7 @@
           </div>
         </div>
 
-        <footer class="foot">
+        <footer class="foot" data-reveal>
           <p>Made by hand, with care, in small batches. <a href="#top">Back to top</a></p>
           <ul class="foot__social" aria-label="Social links">
             <li><a class="s s--dark" href="#top" aria-label="Facebook">f</a></li>
@@ -190,5 +228,6 @@
     </section>
   </main>
 
+  <script src="main.js" defer></script>
 </body>
 </html>

@@ -136,11 +136,14 @@ ul { list-style: none; }
 
 /* ============ HERO ============ */
 .hero {
-  background: var(--sky) url("assets/images/hero.png") center bottom / cover no-repeat;
+  background: #94b4a5;
+  position: relative;
+  --scene-w: max(100%, calc(var(--u) * 444 * 1312 / 816));
+  --scene-x: 0.5;
   height: calc(var(--u) * 444);
   overflow: hidden;
 }
-.hero__inner { padding-top: calc(var(--u) * 45); }
+.hero__inner { padding-top: calc(var(--u) * 45); position: relative; z-index: 2; }
 .hero__title {
   font-weight: 400;
   display: flex; flex-direction: column; align-items: flex-start;
@@ -176,6 +179,152 @@ ul { list-style: none; }
   transition: background .2s, transform .2s;
 }
 .btn:hover { background: var(--red); transform: translateY(-1px); }
+
+/* ---- layered scene ---- */
+.scene {
+  position: absolute; bottom: 0;
+  width: var(--scene-w);
+  left: calc((100% - var(--scene-w)) * var(--scene-x));
+  aspect-ratio: 1312 / 816;
+  z-index: 1;
+  pointer-events: none;
+}
+.scene__zoom {
+  position: absolute; inset: 0;
+  transform-origin: 66% 62%;
+  animation: push-in 32s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.layer {
+  position: absolute; inset: 0;
+  will-change: transform;
+}
+.layer--back > img, .layer--front > img { width: 100%; height: 100%; display: block; }
+
+/* painted foam edge along the bottom, in front of everything */
+.scene__foam {
+  position: absolute; left: -1%; bottom: -1px;
+  width: 102%; max-width: none; height: auto;
+}
+
+/* clouds drift across the sky, behind the tower */
+.cloud { position: absolute; height: auto; max-width: none; opacity: .96; }
+.cloud--a { width: 16%; top: 1.5%;  left: 0; animation: drift 150s linear infinite; animation-delay: -38s; }
+.cloud--b { width: 10.5%; top: 13%; left: 0; animation: drift 210s linear infinite; animation-delay: -150s; opacity: .9; }
+
+/* light glinting on the lake */
+.layer--water {
+  top: 79.500%; bottom: 7%;
+  -webkit-mask-image: linear-gradient(#000 55%, transparent);
+          mask-image: linear-gradient(#000 55%, transparent);
+}
+.shimmer {
+  position: absolute; inset: 0;
+  background-repeat: repeat;
+  mix-blend-mode: soft-light;
+}
+.shimmer--a {
+  background-image: radial-gradient(ellipse 46% 9% at 50% 50%, rgba(255,250,232,.95), transparent 100%);
+  background-size: 17% 26%;
+  animation: glint-a 13s linear infinite, twinkle 5s ease-in-out infinite;
+}
+.shimmer--b {
+  background-image: radial-gradient(ellipse 40% 7% at 50% 50%, rgba(255,250,232,.8), transparent 100%);
+  background-size: 11% 19%;
+  background-position: 4% 40%;
+  animation: glint-b 19s linear infinite, twinkle 7s ease-in-out -3s infinite;
+}
+
+/* sailboats: slow sail + gentle bob */
+.boat { position: absolute; display: block; }
+.boat img { width: 100%; height: auto; transform-origin: 50% 92%; animation: bob 5s ease-in-out infinite; }
+.boat--1 { width: 5.800%; left: 19.500%; top: 70.200%; animation: sail 46s ease-in-out infinite alternate; }
+.boat--2 { width: 4.200%; left: 30%;  top: 72.800%; animation: sail 60s ease-in-out -20s infinite alternate-reverse; }
+.boat--2 img { animation-duration: 6.200s; animation-delay: -2s; }
+.boat--3 { width: 2.900%; left: 7.500%;  top: 75.200%; animation: sail 80s ease-in-out -35s infinite alternate; }
+.boat--3 img { animation-duration: 7s; animation-delay: -4s; }
+
+@keyframes push-in { from { transform: scale(1.045); } to { transform: scale(1.12); } }
+@keyframes drift   { from { transform: translateX(-110%); } to { transform: translateX(590%); } }
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-1.800deg); }
+  50%      { transform: translateY(3.500%) rotate(2deg); }
+}
+@keyframes sail    { from { transform: translateX(-45%); } to { transform: translateX(95%); } }
+@keyframes glint-a { to { background-position: 17% 0; } }
+@keyframes glint-b { from { background-position: 4% 40%; } to { background-position: -7% 40%; } }
+@keyframes twinkle { 0%, 100% { opacity: .35; } 50% { opacity: .95; } }
+
+/* ---- title reveal ---- */
+:root { --intro: 1.900s; }               /* when the curtain has lifted */
+.no-intro { --intro: .250s; }
+
+.hero__line { display: block; overflow: hidden; padding: 0 .12em .1em 0; margin-bottom: -.1em; }
+.hero__line > span { display: inline-block; }
+.hero__l1 > span, .hero__l3 > span {
+  animation: line-rise 1s cubic-bezier(.2,.75,.2,1) both;
+}
+.hero__l1 > span { animation-delay: var(--intro); }
+.hero__l3 > span { animation-delay: calc(var(--intro) + .550s); }
+.hero__l2 { overflow: visible; }
+.hero__l2 > span {                        /* written in, left to right */
+  padding: .1em .25em .25em .1em; margin: -.1em -.25em -.25em -.1em;
+  animation: write-in 1.100s cubic-bezier(.5,0,.3,1) both;
+  animation-delay: calc(var(--intro) + .300s);
+}
+.btn { animation: fade-up .800s ease both; animation-delay: calc(var(--intro) + 1.150s); }
+
+@keyframes line-rise { from { transform: translateY(112%) rotate(3deg); } to { transform: none; } }
+@keyframes write-in  { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes fade-up   { from { opacity: 0; translate: 0 calc(var(--u) * 6); } to { opacity: 1; translate: 0 0; } }
+
+/* ============ OPENING CURTAIN ============ */
+.curtain {
+  position: fixed; inset: 0; z-index: 100;
+  background: var(--navy);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: calc(var(--u) * 6);
+  pointer-events: none;
+  animation: curtain-lift 1s cubic-bezier(.75,0,.2,1) 1.150s both;
+}
+.curtain::after {                         /* cream foam edge trailing the curtain */
+  content: ""; position: absolute; left: 0; right: 0; top: 100%;
+  height: 5vh; background: var(--cream);
+}
+.curtain__logo {
+  font-family: var(--display);
+  font-size: clamp(44px, calc(var(--u) * 46), 120px);
+  line-height: 1.100;
+  color: var(--red);
+  animation: curtain-logo .800s ease .100s both;
+}
+.curtain__rule {
+  width: clamp(90px, calc(var(--u) * 70), 190px); height: 2px;
+  background: var(--cream);
+  transform-origin: center;
+  animation: curtain-rule .800s cubic-bezier(.3,.7,.2,1) .350s both;
+}
+.no-intro .curtain { display: none; }
+
+@keyframes curtain-lift { from { transform: translateY(0); } to { transform: translateY(-106%); visibility: hidden; } }
+@keyframes curtain-logo { from { opacity: 0; transform: translateY(18px); letter-spacing: .08em; } to { opacity: 1; transform: none; letter-spacing: .010em; } }
+@keyframes curtain-rule { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: .8; } }
+
+/* ============ SCROLL REVEALS ============ */
+/* Uses the individual translate/scale/rotate properties so hover transforms keep working. */
+.js [data-reveal] {
+  opacity: 0;
+  translate: 0 calc(var(--u) * 14);
+  transition:
+    opacity .800s ease calc(var(--d, 0) * 120ms),
+    translate .900s cubic-bezier(.2,.7,.2,1) calc(var(--d, 0) * 120ms),
+    scale .900s cubic-bezier(.2,.7,.2,1) calc(var(--d, 0) * 120ms),
+    rotate .900s cubic-bezier(.2,.7,.2,1) calc(var(--d, 0) * 120ms),
+    transform .250s ease, box-shadow .250s ease;
+}
+.js [data-reveal="stamp"] { translate: 0 calc(var(--u) * 8); scale: .78; rotate: -9deg; }
+.js [data-reveal="zoom"]  { translate: 0 0; scale: .88; }
+.js [data-reveal].is-in   { opacity: 1; translate: 0 0; scale: 1; rotate: 0deg; }
 
 /* ============ CRAFTS ============ */
 .crafts {
@@ -420,7 +569,7 @@ ul { list-style: none; }
   .dot { width: calc(var(--u) * 30); height: calc(var(--u) * 30); }
   .nav__actions { gap: calc(var(--u) * 6); margin-right: 0; }
 
-  .hero { height: calc(var(--u) * 430); background-position: 72% bottom; }
+  .hero { height: calc(var(--u) * 430); --scene-w: calc(var(--u) * 430 * 1312 / 816); --scene-x: 0.72; }
   .hero__inner { padding-top: calc(var(--u) * 26); }
   .hero__title, .btn { margin-left: 0; }
   .hero__l1 { font-size: calc(var(--u) * 54); }
@@ -471,5 +620,8 @@ ul { list-style: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { transition: none !important; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .curtain { display: none; }
+  .js [data-reveal] { opacity: 1; translate: 0 0; scale: 1; rotate: 0deg; }
+  .layer { transform: none !important; }
 }

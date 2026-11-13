@@ -4,7 +4,8 @@
 
 - `index.html` – page markup
 - `styles.css` – styles (scales proportionally from a 700-unit design grid; re-flows below 760px)
-- `assets/images/` – generated PNG illustrations (hero, 3 cards, 4 plant badges, artisans)
+- `main.js` – cinematic effects (hero parallax, scroll reveals); the page still works without JavaScript
+- `assets/images/` – generated PNG illustrations (layered hero scene, 3 cards, 4 plant badges, artisans)
 - `assets/fonts/` – self-hosted fonts (Berkshire Swash, Kaushan Script, Bitter — all SIL OFL)
 
 Open `index.html` in a browser, or serve the folder with any static server (e.g. `npx serve .`).
