@@ -10,11 +10,11 @@
 <meta name="theme-color" content="#0a0a0a" />
 <script>
   try {
-    if (sessionStorage.getItem('redpoly-splash-seen') === '1') {
-      document.documentElement.classList.add('redpoly-splash-seen');
-    } else {
-      sessionStorage.setItem('redpoly-splash-seen', '1');
-    }
+    var splashLoads = Number.parseInt(sessionStorage.getItem('redpoly-splash-loads') || '0', 10);
+    splashLoads = (Number.isNaN(splashLoads) ? 0 : splashLoads) + 1;
+    var showSplash = splashLoads % 3 === 0;
+    sessionStorage.setItem('redpoly-splash-loads', String(splashLoads % 3));
+    if (!showSplash) document.documentElement.classList.add('redpoly-splash-seen');
   } catch (_) {}
 </script>
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/redpoly/favicon.png?v=redpoly-logo-20261114" />
