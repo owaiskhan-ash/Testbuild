@@ -27,6 +27,7 @@ body.creature-page--noor .char-spark--four{width:11px;height:11px}
 .char-hero h1{position:relative;margin-top:16px;font-family:'Anton',sans-serif;font-size:clamp(98px,15vw,202px);line-height:.69;letter-spacing:-2px;text-transform:uppercase;color:var(--character-light);text-shadow:7px 8px 0 var(--character-text-shadow)}
 .char-hero h1 span{display:inline-block;color:var(--character-accent);transform:rotate(-3deg);transform-origin:left center}
 .char-hero h1 i{display:inline-block;margin-left:8px;color:var(--character-hot);font-style:normal;transform:rotate(9deg)}
+html.motion-ready .char-hero h1 .char-title__letter{animation:char-letter-arrive .62s cubic-bezier(.18,.76,.2,1) calc(180ms + var(--letter-index)*58ms) both;transform-origin:50% 100%;will-change:transform,opacity,filter}
 .char-intro{max-width:425px;margin-top:29px;font-size:clamp(15px,1.5vw,18px);font-weight:600;line-height:1.55;color:var(--character-muted-strong)}
 .char-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
 .char-tags span{padding:7px 9px;border:1px solid var(--character-muted-border);font-size:8px;font-weight:900;letter-spacing:1px;color:#fff;text-transform:uppercase}
@@ -60,6 +61,10 @@ body.creature-page--noor .char-spark--four{width:11px;height:11px}
 .char-overline{font-size:10px;font-weight:900;letter-spacing:2.5px;color:var(--character-hot)}
 .char-story h2,.char-final-cta h2{margin-top:14px;font:clamp(55px,8vw,105px)/.84 'Anton',sans-serif;letter-spacing:-1px;color:var(--character-light)}
 .char-story h2 span{color:var(--character-hot)}
+body.creature-page--noor .noor-soft-glow{color:var(--character-light);text-shadow:0 0 10px rgba(232,74,183,.32),0 0 25px rgba(118,87,255,.2)}
+html.motion-ready body.creature-page--noor .noor-soft-glow{animation:noor-glow-breathe 3.2s ease-in-out infinite alternate}
+body.creature-page--noor .noor-big-magic{display:inline-block;color:transparent;background-image:linear-gradient(108deg,#ffd23f 0%,#fff4dc 20%,#e84ab7 43%,#a89cff 64%,#ffd23f 83%,#fff4dc 100%);background-size:220% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 11px rgba(232,74,183,.2))}
+html.motion-ready body.creature-page--noor .noor-big-magic{animation:noor-magic-shimmer 5.4s ease-in-out infinite}
 .char-story__text{max-width:480px;font-size:14px;font-weight:500;line-height:1.7;color:var(--character-muted)}
 .char-story__text p+p{margin-top:15px}
 .char-text-link{display:inline-flex;gap:12px;align-items:center;margin-top:24px;color:var(--character-accent);font-size:10px;font-weight:900;letter-spacing:1.2px}
@@ -108,6 +113,9 @@ html.motion-ready .char-spark--two{animation-delay:.4s}.motion-ready .char-spark
 html.motion-ready .char-buy:not(.added){animation:char-cta-pulse 3s 1.4s ease-in-out infinite}
 html.motion-ready .char-reveal{opacity:0;transform:translateY(30px) rotate(-1deg);filter:blur(5px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1),filter .7s ease;transition-delay:var(--char-delay,0ms)}
 html.motion-ready .char-reveal.char-reveal--in{opacity:1;transform:none;filter:blur(0)}
+@keyframes char-letter-arrive{0%{opacity:0;transform:translateY(.42em) rotate(-12deg) scale(.86);filter:blur(5px)}72%{opacity:1;transform:translateY(-.05em) rotate(2deg) scale(1.04);filter:blur(0)}100%{opacity:1;transform:translateY(0) rotate(0) scale(1);filter:blur(0)}}
+@keyframes noor-glow-breathe{from{text-shadow:0 0 7px rgba(232,74,183,.2),0 0 17px rgba(118,87,255,.12)}to{text-shadow:0 0 13px rgba(232,74,183,.44),0 0 31px rgba(118,87,255,.26)}}
+@keyframes noor-magic-shimmer{0%,100%{background-position:100% 50%;filter:drop-shadow(0 0 8px rgba(232,74,183,.16))}50%{background-position:0 50%;filter:drop-shadow(0 0 17px rgba(255,210,63,.35))}}
 @keyframes char-float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-13px) rotate(-1.5deg)}}
 @keyframes char-texture-drift{0%{opacity:.68;transform:scale(1);filter:saturate(.9)}100%{opacity:1;transform:scale(1.04);filter:saturate(1.2)}}
 @keyframes char-copy-enter{0%{opacity:0;transform:translateY(22px);filter:blur(5px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
