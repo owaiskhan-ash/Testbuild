@@ -9,7 +9,7 @@ The Indian connection is through the names, monsoon/night/nature palette, and co
 - Soft 3D collectible vinyl figure, highly polished but still graphic and toy-like; smooth molded surface, gentle studio lighting, crisp dark contour, bright poppy colors.
 - Single character, full body, centered, straight-on or gentle 3/4 view; clean silhouette with margin.
 - **Deliver as a real transparent-alpha PNG.** No checkerboard baked into pixels, white/colored backdrop, floor, scenery, cast shadow, label, text, logo, or watermark.
-- Canonical identity rule: create one master PNG for each character. Reuse that exact file for hero, product card, collections, and packaging mockups; never independently regenerate alternate versions for different page placements. Keep every named feature and color blocking fixed.
+- Canonical identity rule: create one master PNG for each character. Reuse that exact file for hero, product cards, and packaging mockups; never independently regenerate alternate model designs for different page placements. Approved pose-and-expression variants may be used only in the Explore Our Collections cards. Keep every named feature, count, silhouette, and color blocking fixed, and retain the master PNG as the canonical asset.
 
 ## 01 — BARSAAT | The Curious One
 **Name cue:** Barsaat means rain.
