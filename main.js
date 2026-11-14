@@ -4,6 +4,32 @@
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduceMotion) root.classList.add('motion-ready');
 
+  // Reveal each character-page title glyph in sequence while keeping one clean accessible label.
+  if (!reduceMotion) {
+    document.querySelectorAll('.char-hero h1[aria-label]').forEach(function (heading) {
+      var walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+      var textNodes = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode);
+      var letterIndex = 0;
+      textNodes.forEach(function (node) {
+        var fragment = document.createDocumentFragment();
+        Array.from(node.nodeValue).forEach(function (character) {
+          if (/\s/.test(character)) {
+            fragment.appendChild(document.createTextNode(character));
+            return;
+          }
+          var letter = document.createElement('span');
+          letter.className = 'char-title__letter';
+          letter.setAttribute('aria-hidden', 'true');
+          letter.style.setProperty('--letter-index', letterIndex++);
+          letter.textContent = character;
+          fragment.appendChild(letter);
+        });
+        node.parentNode.replaceChild(fragment, node);
+      });
+    });
+  }
+
   var toast = document.getElementById('toast');
   var toastTimer = null;
   function showToast(msg) {
