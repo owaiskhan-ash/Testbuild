@@ -113,6 +113,31 @@ body.creature-page--barsaat .char-detail-card:nth-child(3)::after{background:rad
   body.creature-page--barsaat .char-detail-card::after{animation:none}
 }
 
+/* Noor's card accents: nocturnal shimmer, a drifting moth, and warm gold glints. */
+body.creature-page--noor .char-detail-card{overflow:hidden;isolation:isolate}
+body.creature-page--noor .char-detail-card::before,
+body.creature-page--noor .char-detail-card::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;will-change:transform,opacity;backface-visibility:hidden}
+body.creature-page--noor .char-detail-card__num,
+body.creature-page--noor .char-detail-card__icon{z-index:1}
+body.creature-page--noor .char-detail-card h3,
+body.creature-page--noor .char-detail-card p{position:relative;z-index:1}
+body.creature-page--noor .char-detail-card:nth-child(1)::before{background:radial-gradient(ellipse at 82% 74%,rgba(232,74,183,.22),transparent 39%),radial-gradient(ellipse at 72% 38%,rgba(115,101,255,.15),transparent 42%);animation:noor-night-glow 5.6s ease-in-out infinite alternate}
+body.creature-page--noor .char-detail-card:nth-child(1)::after{inset:22% 12% auto auto;content:"✦";color:rgba(53,47,159,.48);font-size:19px;animation:noor-night-star 3.4s ease-in-out infinite}
+body.creature-page--noor .char-detail-card:nth-child(2)::before{background:radial-gradient(ellipse at 77% 45%,rgba(232,74,183,.28) 0 10px,transparent 11px),radial-gradient(ellipse at 68% 46%,rgba(232,74,183,.2) 0 7px,transparent 8px),radial-gradient(ellipse at 77% 57%,rgba(255,255,255,.35) 0 7px,transparent 8px),radial-gradient(ellipse at 68% 57%,rgba(255,255,255,.28) 0 5px,transparent 6px),radial-gradient(ellipse at 73% 52%,rgba(53,47,159,.3) 0 2px,transparent 3px);animation:noor-moth-drift 4.8s ease-in-out infinite alternate}
+body.creature-page--noor .char-detail-card:nth-child(2)::after{inset:28% 13% auto auto;content:"✧";color:rgba(53,47,159,.4);font-size:15px;animation:noor-moth-dust 3.8s ease-in-out infinite}
+body.creature-page--noor .char-detail-card:nth-child(3)::before{background:radial-gradient(ellipse at 82% 74%,rgba(255,210,63,.18),transparent 38%),radial-gradient(ellipse at 72% 38%,rgba(255,210,63,.12),transparent 44%);animation:noor-gold-glow 4.6s ease-in-out infinite alternate}
+body.creature-page--noor .char-detail-card:nth-child(3)::after{inset:24% 13% auto auto;content:"✦";color:rgba(255,210,63,.82);font-size:21px;animation:noor-gold-glints 3s ease-in-out infinite}
+@keyframes noor-night-glow{from{opacity:.55;transform:translate3d(2px,3px,0) scale(.98)}to{opacity:1;transform:translate3d(-3px,-3px,0) scale(1.03)}}
+@keyframes noor-night-star{0%,100%{opacity:.35;transform:rotate(-12deg) scale(.82)}50%{opacity:.85;transform:rotate(12deg) scale(1.08)}}
+@keyframes noor-moth-drift{from{opacity:.62;transform:translate3d(0,4px,0) rotate(-1deg)}to{opacity:.95;transform:translate3d(-5px,-5px,0) rotate(1deg)}}
+@keyframes noor-moth-dust{0%,100%{opacity:.25;transform:translate3d(0,4px,0) rotate(-10deg)}50%{opacity:.8;transform:translate3d(0,-4px,0) rotate(12deg)}}
+@keyframes noor-gold-glow{from{opacity:.5;transform:scale(.98)}to{opacity:1;transform:scale(1.03)}}
+@keyframes noor-gold-glints{0%,100%{opacity:.35;transform:rotate(-8deg) scale(.85)}50%{opacity:.95;transform:rotate(10deg) scale(1.12)}}
+@media(prefers-reduced-motion:reduce){
+  body.creature-page--noor .char-detail-card::before,
+  body.creature-page--noor .char-detail-card::after{animation:none}
+}
+
 .char-final-cta{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:72px 20px 80px;background:var(--character-hot);color:var(--character-final-ink);text-align:center}
 .char-final-cta::before,.char-final-cta::after{content:"";position:absolute;width:230px;height:230px;border:28px solid var(--character-accent-halo);border-radius:50%}
 .char-final-cta::before{left:-110px;top:-100px}
