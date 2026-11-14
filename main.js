@@ -21,7 +21,7 @@
       var original = btn.innerHTML;
       btn.classList.add('added');
       btn.innerHTML = '✓ ADDED TO CART';
-      showToast(name + ' added to cart — ₹3,299');
+      showToast(name + ' added to cart - ₹3,299');
       setTimeout(function () {
         btn.classList.remove('added');
         btn.innerHTML = original;
@@ -48,7 +48,7 @@
       e.preventDefault();
       var email = document.getElementById('crewEmail');
       if (email && email.value) {
-        showToast('Welcome to the crew — check your inbox!');
+        showToast('Welcome to the crew - check your inbox!');
         form.reset();
       }
     });
@@ -139,6 +139,44 @@
         card.style.setProperty('--tilt-x', '0deg');
         card.style.setProperty('--tilt-y', '0deg');
       });
+    });
+  }
+
+  // Character product pages: staged scroll reveals and a subtle 3D response to desktop pointer movement.
+  var productReveals = Array.prototype.slice.call(document.querySelectorAll(
+    '.char-story__eyebrow, .char-story__grid > *, .char-detail-card, .char-final-cta > *'
+  ));
+  if (!reduceMotion && productReveals.length) {
+    productReveals.forEach(function (el, i) {
+      el.classList.add('char-reveal');
+      el.style.setProperty('--char-delay', (i % 3) * 110 + 'ms');
+    });
+    if ('IntersectionObserver' in window) {
+      var productObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('char-reveal--in');
+          productObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.16, rootMargin: '0px 0px -5% 0px' });
+      productReveals.forEach(function (el) { productObserver.observe(el); });
+    } else {
+      productReveals.forEach(function (el) { el.classList.add('char-reveal--in'); });
+    }
+  }
+
+  var productStage = document.querySelector('.char-stage');
+  if (productStage && !reduceMotion && finePointer) {
+    productStage.addEventListener('pointermove', function (event) {
+      var rect = productStage.getBoundingClientRect();
+      var x = (event.clientX - rect.left) / rect.width - 0.5;
+      var y = (event.clientY - rect.top) / rect.height - 0.5;
+      productStage.style.setProperty('--stage-tilt-x', (x * 5).toFixed(2) + 'deg');
+      productStage.style.setProperty('--stage-tilt-y', (y * -4).toFixed(2) + 'deg');
+    });
+    productStage.addEventListener('pointerleave', function () {
+      productStage.style.setProperty('--stage-tilt-x', '0deg');
+      productStage.style.setProperty('--stage-tilt-y', '0deg');
     });
   }
 })();

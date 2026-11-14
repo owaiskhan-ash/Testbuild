@@ -1,4 +1,4 @@
-/* REDPOLY — exact landing page recreation */
+/* REDPOLY - exact landing page recreation */
 :root{
   --lime:#C8FF00;
   --lime-dark:#7ED321;
@@ -103,6 +103,9 @@ button{font-family:inherit;cursor:pointer}
 .p-card__img img{width:100%;aspect-ratio:290/320;object-fit:cover}
 .p-card__body{padding:12px 14px 14px;display:flex;flex-direction:column;flex:1}
 .p-card__body h3{font-family:'Anton',sans-serif;font-size:21px;letter-spacing:.3px;text-transform:uppercase;line-height:1}
+.p-card__product-link{display:inline-flex;align-items:center;gap:5px}
+.p-card__product-link span{color:var(--orange);font:700 14px 'Archivo',sans-serif;transition:transform .18s ease}
+.p-card__product-link:hover span{transform:translate(2px,-2px)}
 .p-card__sub{margin-top:3px;color:var(--orange);font-weight:900;font-size:10px;letter-spacing:1.2px;text-transform:uppercase}
 .p-card__price{margin-top:6px;font-family:'Anton',sans-serif;font-size:21px;line-height:1}
 .p-card__price span{font-size:13px;letter-spacing:.5px}
@@ -189,6 +192,8 @@ button{font-family:inherit;cursor:pointer}
 .box__label--bottom small{font-size:8px;font-weight:900;letter-spacing:.7px;color:#fff}
 .p-card__img{position:relative;overflow:hidden;aspect-ratio:290/320}
 .p-card__img img{height:100%;object-fit:contain;background:var(--cream);padding:2px}
+.p-card__image-link{display:block;width:100%;height:100%;cursor:pointer}
+.p-card__image-link:focus-visible{outline:4px solid var(--orange);outline-offset:-4px}
 .stock{position:absolute;top:10px;left:10px;z-index:2;padding:5px 8px;background:var(--lime);color:var(--black);font-size:9px;line-height:1;font-weight:900;letter-spacing:.6px;text-transform:uppercase;clip-path:polygon(2% 0,100% 4%,96% 100%,0 92%)}
 .heart{position:absolute;top:8px;right:8px;z-index:2;width:30px;height:30px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--black);display:grid;place-items:center;box-shadow:0 1px 5px rgba(0,0,0,.18)}
 .heart svg{width:17px;height:17px}
