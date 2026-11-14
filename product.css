@@ -7,8 +7,9 @@ body.creature-page--noor .char-spark{width:9px;height:9px;border-radius:50%;back
 body.creature-page--noor .char-spark--two{width:6px;height:6px}
 body.creature-page--noor .char-spark--four{width:11px;height:11px}
 .char-nav{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%;max-width:none;margin:auto;padding:18px max(clamp(20px,5vw,76px),calc((100vw - 1440px)/2 + clamp(20px,5vw,76px)));border-bottom:1px solid var(--character-muted-border);background:var(--character-nav)}
-.char-wordmark{display:flex;flex-direction:column;font:32px/.86 'Anton',sans-serif;letter-spacing:.5px;color:#fff}
-.char-wordmark span{margin-top:7px;color:var(--character-accent);font:800 8px/1 'Archivo',sans-serif;letter-spacing:2px}
+.char-wordmark{display:flex;flex-direction:column;align-items:flex-start;gap:5px;color:#fff}
+.char-wordmark__logo{display:block;width:clamp(86px,8vw,108px);height:auto;max-width:100%}
+.char-wordmark span{color:var(--character-accent);font:800 8px/1 'Archivo',sans-serif;letter-spacing:2px}
 .char-nav nav{display:flex;align-items:center;gap:clamp(14px,3vw,38px)}
 .char-nav nav a,.char-footer>a:last-child{font-size:10px;font-weight:900;letter-spacing:1.2px}
 .char-nav nav a:hover,.char-footer>a:last-child:hover{color:var(--character-accent)}
@@ -91,7 +92,7 @@ html.motion-ready .char-story h2 .char-story__magic{animation:char-story-magic 5
 .char-final-cta h2 span{color:var(--character-light)}
 .char-buy--final{margin-top:26px;background:var(--character-accent)}
 .char-footer{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:23px clamp(20px,5vw,76px);background:#0b0809}
-.char-footer .char-wordmark{font-size:25px}
+.char-footer .char-wordmark__logo{width:86px}
 .char-footer .char-wordmark span{font-size:7px}
 body.creature-page--barsaat .char-hero h1{font-size:clamp(82px,12.4vw,168px)}
 body.creature-page--noor .char-stage__figure{width:min(115%,620px);max-height:500px}
