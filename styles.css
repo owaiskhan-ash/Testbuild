@@ -119,6 +119,8 @@ button{font-family:inherit;cursor:pointer}
 .c-card:hover{transform:translateY(-3px)}
 .c-card:hover .c-card__backdrop{transform:scale(1.03)}
 .c-card:hover .c-card__character{transform:translateY(-4px) scale(1.025)}
+.c-card--accessories .c-card__character{transform:rotate(-6deg) scale(.96)}
+.c-card--accessories:hover .c-card__character{transform:translateY(-4px) rotate(-6deg) scale(.985)}
 
 /* ============ CREW / FOOTER ============ */
 .crew{background:var(--lime);color:var(--black);padding:26px 0;border-top:4px solid #000}
@@ -319,7 +321,9 @@ html.motion-ready .p-card.in:hover .p-card__img img{transform:translateZ(18px) s
 html.motion-ready .p-card__img::after{content:"";position:absolute;inset:-25% auto -25% -65%;width:38%;z-index:1;pointer-events:none;opacity:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,.56),transparent);transform:skewX(-18deg)}
 html.motion-ready .p-card.in:hover .p-card__img::after{opacity:1;animation:vinyl-glint .72s ease-out both}
 html.motion-ready .c-card[data-reveal].in:hover{transform:translateY(-8px) rotate(-1.2deg) scale(1.02);filter:none}
-html.motion-ready .c-card[data-reveal].in:hover>img{transform:scale(1.075) rotate(1deg)}
+html.motion-ready .c-card[data-reveal].in:hover>.c-card__backdrop{transform:scale(1.075) rotate(1deg)}
+html.motion-ready .c-card[data-reveal].in:hover>.c-card__character{transform:translateY(-4px) scale(1.025)}
+html.motion-ready .c-card--accessories[data-reveal].in:hover>.c-card__character{transform:translateY(-4px) rotate(-6deg) scale(.985)}
 html.motion-ready .c-card[data-reveal].in:hover .c-card__crown{transform:rotate(9deg) translateY(-3px);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
 html.motion-ready .c-card[data-reveal].in:hover .c-card__body em{transform:translateX(5px)}
 html.motion-ready .c-card__body em{transition:transform .2s ease}
@@ -341,7 +345,8 @@ html.motion-ready .btn-lime:hover{filter:drop-shadow(5px 5px 0 rgba(200,255,0,.2
   html.motion-ready [data-reveal],html.motion-ready [data-reveal].in{filter:none;transition:none}
   html.motion-ready .motion-word{opacity:1;transform:none;filter:none;animation:none}
   html.motion-ready .p-card.in:hover,html.motion-ready .c-card[data-reveal].in:hover{transform:none;box-shadow:6px 6px 0 #000}
-  html.motion-ready .p-card.in:hover .p-card__img img,html.motion-ready .c-card[data-reveal].in:hover>img{transform:none}
+  html.motion-ready .p-card.in:hover .p-card__img img,html.motion-ready .c-card[data-reveal].in:hover>.c-card__backdrop,html.motion-ready .c-card[data-reveal].in:hover>.c-card__character{transform:none}
+  html.motion-ready .c-card--accessories[data-reveal].in:hover>.c-card__character{transform:rotate(-6deg) scale(.96)}
 }
 
 /* REDPOLY footer crew portrait: one transparent face lineup, matched to the character guide. */
