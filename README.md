@@ -7,6 +7,8 @@ Static collectible-creature storefront built with HTML, CSS and JavaScript (no b
 - `styles.css` and `product.css` - responsive landing page and animated character product page styling
 - `main.js` - cart feedback, wishlist hearts, crew form, kinetic text, scroll reveals and reduced-motion-aware motion
 - `CHARACTER-GUIDE.md` - canonical character bible and visual consistency rules
+- `assets/images/redpoly/redpoly-logo.png` - selected REDPOLY logo artwork used in the site wordmarks
+- `assets/images/redpoly/favicon.png` and `favicon.ico` - matching REDPOLY browser and home-screen icons
 - `assets/images/redpoly/characters/` - four canonical transparent-alpha character PNGs
 - `assets/images/redpoly/social/` - 1200 by 630 social share graphics for all four characters
 - `assets/images/redpoly/footer-faces/footer-crew.png` - transparent footer face lineup
