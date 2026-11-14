@@ -210,5 +210,9 @@ button{font-family:inherit;cursor:pointer}
 .c-card__body small{font-size:11px;font-weight:700;line-height:1.35}
 .c-card__body em{margin-top:5px;font-style:normal;font-size:10px;font-weight:900;letter-spacing:.8px;text-transform:uppercase}
 .c-card:hover .c-card__body em{text-decoration:underline}
+/* Fit the transparent soft-3D PNG cutouts cleanly into their containers. */
+.box>img{object-fit:contain;object-position:center}
+.box--chomp-mini{object-fit:contain}
+.chomp-hero{width:auto;max-width:100%;max-height:460px;object-fit:contain}
 @media(max-width:1024px){.c-card{aspect-ratio:410/420}}
 @media(max-width:640px){.c-card__num{font-size:36px}.c-card__body{left:14px;right:14px;bottom:13px}.c-card__body small{font-size:10px}}
