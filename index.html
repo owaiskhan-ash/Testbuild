@@ -8,6 +8,15 @@
 <link rel="canonical" href="https://redpoly.justsimpleapps.online/" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta name="theme-color" content="#0a0a0a" />
+<script>
+  try {
+    if (sessionStorage.getItem('redpoly-splash-seen') === '1') {
+      document.documentElement.classList.add('redpoly-splash-seen');
+    } else {
+      sessionStorage.setItem('redpoly-splash-seen', '1');
+    }
+  } catch (_) {}
+</script>
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/redpoly/favicon.png?v=redpoly-logo-20261114" />
 <link rel="shortcut icon" href="/assets/images/redpoly/favicon.ico?v=redpoly-logo-20261114" />
 <link rel="apple-touch-icon" href="/assets/images/redpoly/favicon.png?v=redpoly-logo-20261114" />
@@ -29,6 +38,20 @@
 <link rel="stylesheet" href="styles.css?v=origin-comic-20261114" />
 </head>
 <body>
+
+<div class="brand-splash" aria-hidden="true">
+  <span class="brand-splash__orb brand-splash__orb--lime"></span>
+  <span class="brand-splash__orb brand-splash__orb--orange"></span>
+  <span class="brand-splash__orb brand-splash__orb--aqua"></span>
+  <div class="brand-splash__content">
+    <p class="brand-splash__kicker">MONSOON MISCHIEF PRESENTS</p>
+    <img class="brand-splash__logo" src="/assets/images/redpoly/redpoly-logo.png" alt="" width="1353" height="711" fetchpriority="high" />
+    <p class="brand-splash__tagline">COLLECT <i></i> EXPLORE <i></i> DISPLAY</p>
+    <div class="brand-splash__progress"><span></span></div>
+  </div>
+  <span class="brand-splash__drop brand-splash__drop--one"></span>
+  <span class="brand-splash__drop brand-splash__drop--two"></span>
+</div>
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="top">
