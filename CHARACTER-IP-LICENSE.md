@@ -7,7 +7,7 @@ This notice applies to the REDPOLY characters **Barsaat, Agni, Noor, and Aarav**
 - canonical character artwork in `assets/images/redpoly/characters/`;
 - approved pose artwork in `assets/images/redpoly/collections/`;
 - character packaging and social graphics;
-- the origin-story comic and any group or ensemble character artwork; and
+- the origin-story comic in `comics/` and any group or ensemble character artwork; and
 - copies of those materials in `Sample Images/`.
 
 ## No license granted
