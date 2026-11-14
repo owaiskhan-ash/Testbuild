@@ -1,20 +1,29 @@
 # The Last Durian – storyboard video
 
-`the-last-durian.mp4` is a 31 second, 1920×1080, 30 fps motion-comic cut of the five storyboard
+`the-last-durian.mp4` is a 32 second, 1920×1080, 30 fps animated cut of the five storyboard
 frames in the parent folder. It has no audio.
 
-The stills are not re-drawn or animated by a video model. Each frame is split into depth layers
-and filmed with a virtual camera:
+No video model is involved. The characters are animated pose to pose: every scene has a few key
+poses in `poses/` (edited copies of the storyboard frame with a different gesture or expression),
+and the renderer warps one pose into the next along optical flow. On top of that the characters
+breathe, sway, bounce when they laugh and, in the first shot, he walks in. Each frame is also
+split into depth layers and filmed with a virtual camera.
 
 | Step | Script | What it does |
 | --- | --- | --- |
-| 1 | `prep.py` | 2× upscale of each frame, a saliency matte and a depth map (saved in `maps/`) |
-| 2 | `layers.py` | Splits the frame into background plate, characters and near foreground, and pre-blurs each layer with a bokeh-shaped kernel |
-| 3 | `render.py` | Per shot: parallax camera move, depth of field with focus pulls, character rim light and halo, light wash, dust, sparkles, bloom, colour grade |
-| 4 | `assemble.py` | Defocus dissolves between shots, titles, film grain, fades, H.264 encode |
+| 1 | `prep.py` | For each frame and key pose: keeps only the pixels the pose really changed, 2× upscale, saliency matte and depth map (saved in `maps/`) |
+| 2 | `layers.py` | Splits the frame into background plate, characters (one cut-out per key pose) and near foreground, pre-blurs the layers with a bokeh-shaped kernel, computes the flow between poses |
+| 3 | `render.py` | Per shot: acting, parallax camera move, depth of field, character rim light and halo, light wash, dust, sparkles, bloom, colour grade |
+| 4 | `assemble.py` | Short dissolves between shots, titles, film grain, fades, H.264 encode |
 
-Shot timing, camera moves and focus pulls are the `shot1` … `shot5` functions at the top of
-`render.py`; the look of each scene is in `LOOK`.
+Where to change things in `render.py`:
+
+- `ACT` is the acting: per shot and character, which key pose is reached when and how fast.
+  `motion()` holds the body movement (walk, startle, laughter).
+- `shot1` … `shot5` are the camera moves and the lens. Focus stays on the two leads for the whole
+  film, `far` / `near` set how soft things get behind and in front of them. Only the closing shot
+  defocuses the whole frame, under the fade-out.
+- `LOOK` is the light and grade of each scene.
 
 ## Re-rendering
 
@@ -22,7 +31,7 @@ Shot timing, camera moves and focus pulls are the `shot1` … `shot5` functions 
 python -m venv /tmp/venv
 /tmp/venv/bin/pip install numpy opencv-python-headless onnxruntime ncnn numexpr pillow imageio-ffmpeg
 
-/tmp/venv/bin/python prep.py                 # only if the storyboard frames change
+/tmp/venv/bin/python prep.py                 # only what is missing; delete maps/ and $DURIAN_WORK/prep to redo
 /tmp/venv/bin/python layers.py
 /tmp/venv/bin/python render.py shot 1 2 3 4 5
 /tmp/venv/bin/python assemble.py

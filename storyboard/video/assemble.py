@@ -2,6 +2,7 @@
 
   python assemble.py [out.mp4]
 """
+import math
 import os
 import subprocess
 import sys
@@ -17,6 +18,7 @@ from render import FPS, H, SHOT, SHOTS, W, XFADE, ss
 HERE = os.path.dirname(os.path.abspath(__file__))
 FONTS = os.path.join(WORK, "fonts")
 CREAM = (255, 245, 224)
+WARM = np.float32([1.0, 0.92, 0.78])
 
 
 def tracked_text(draw, xy_center, text, font, tracking, fill):
@@ -42,10 +44,10 @@ def title_card(lines):
 
 
 def scrim():
-    """Soft dark oval behind the title so cream type reads over a bright blurred frame."""
+    """Soft dark oval behind the title so cream type reads over a bright, busy frame."""
     y, x = np.mgrid[0:H, 0:W].astype(np.float32)
     r = np.sqrt(((x - W / 2) / (W * 0.48)) ** 2 + ((y - H * 0.5) / (H * 0.42)) ** 2)
-    return np.clip(1 - r, 0, 1) ** 1.2 * 0.42
+    return np.clip(1 - r, 0, 1) ** 1.2 * 0.55
 
 
 def put_title(frame, card, amount, scale=1.0, scrim_map=None):
@@ -100,9 +102,11 @@ def main(out_path):
                 img = shots[n][i].astype(np.float32)
                 if frame is None:
                     frame = img
-                else:                                  # dissolve: second shot fades up over the first
+                else:                                  # short dissolve through a breath of warm light
                     k = np.float32(ss(i + 0.5, 0, XFADE))
                     frame = frame * (1 - k) + img * k
+                    lift = np.float32(0.20 * math.sin(math.pi * k)) * WARM
+                    frame = 255 - (255 - frame) * (1 - lift)
         # titles
         frame = put_title(frame, opening, ss(t, 0.6, 1.5) * (1 - ss(t, 2.3, 3.1)), 1 + 0.012 * t, scr)
         te = t - end_start / FPS
