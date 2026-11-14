@@ -1,6 +1,8 @@
 {
   "cleanUrls": true,
   "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/stories", "destination": "/stories/index.html" },
     { "source": "/barsaat", "destination": "/products/barsaat.html" },
     { "source": "/agni", "destination": "/products/agni.html" },
     { "source": "/noor", "destination": "/products/noor.html" },
