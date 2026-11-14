@@ -56,39 +56,25 @@
           <p id="reader-issue-label" class="reader-kicker">REDPOLY COMICS · ISSUE 01</p>
           <h2 id="reader-title">The Night the Sky Said Hello</h2>
         </div>
-        <div class="reader-toolbar__actions">
-          <button class="reader-zoom" id="reader-zoom" type="button" aria-pressed="false">ZOOM PAGE</button>
-          <button class="reader-close" id="reader-close" type="button" aria-label="Close comic reader">×</button>
-        </div>
+        <button class="reader-close" id="reader-close" type="button" aria-label="Close comic reader">×</button>
       </header>
 
-      <div class="reader-body" id="reader-body">
-        <section class="reader-art" aria-label="Comic page image">
-          <div class="reader-art__controls">
-            <button class="reader-arrow" id="reader-prev" type="button" aria-label="Previous page">←</button>
-            <figure class="reader-figure">
-              <img id="reader-image" src="/comics/issue-001-origin/pages/page-01.png" alt="" />
-              <figcaption id="reader-image-caption">Issue 01 · Page 1</figcaption>
-            </figure>
-            <button class="reader-arrow" id="reader-next" type="button" aria-label="Next page">→</button>
-          </div>
-          <p class="reader-swipe-hint">Use the arrows or swipe to turn the page <span aria-hidden="true">↔</span></p>
-        </section>
-
-        <aside class="reader-script" aria-label="Comic dialogue and captions">
-          <div class="reader-page-heading">
-            <div><span class="reader-page-label">NOW READING</span><h3 id="reader-page-title">PAGE 01</h3></div>
-            <p id="reader-page-count" class="reader-page-count" aria-live="polite">01 / 06</p>
-          </div>
-          <div class="reader-progress" aria-hidden="true"><span id="reader-progress-bar"></span></div>
-          <div id="reader-panels" class="reader-panels" aria-live="polite"></div>
-          <nav id="reader-thumbnails" class="reader-thumbnails" aria-label="Choose comic page"></nav>
-          <div class="reader-bottom-nav">
-            <button id="reader-prev-bottom" type="button">← PREVIOUS</button>
-            <button id="reader-next-bottom" type="button">NEXT PAGE →</button>
-          </div>
-        </aside>
+      <div class="reader-stage" id="reader-stage">
+        <button class="reader-arrow" id="reader-prev" type="button" aria-label="Previous page">←</button>
+        <figure class="reader-figure">
+          <img id="reader-image" src="/comics/issue-001-origin/pages/page-01.png" alt="" />
+        </figure>
+        <button class="reader-arrow" id="reader-next" type="button" aria-label="Next page">→</button>
       </div>
+
+      <footer class="reader-footer">
+        <button class="reader-page-button" id="reader-prev-label" type="button" aria-label="Previous page">← PREVIOUS</button>
+        <div class="reader-page-status" aria-live="polite">
+          <span id="reader-page-count">PAGE 01 / 06</span>
+          <div class="reader-progress" aria-hidden="true"><span id="reader-progress-bar"></span></div>
+        </div>
+        <button class="reader-page-button" id="reader-next-label" type="button" aria-label="Next page">NEXT PAGE →</button>
+      </footer>
     </div>
   </dialog>
 </body>

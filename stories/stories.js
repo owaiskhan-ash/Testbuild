@@ -2,20 +2,14 @@ const grid = document.getElementById('issue-grid');
 const issueCount = document.getElementById('issue-count');
 const dialog = document.getElementById('story-reader');
 const readerImage = document.getElementById('reader-image');
-const readerImageCaption = document.getElementById('reader-image-caption');
 const readerTitle = document.getElementById('reader-title');
 const readerIssueLabel = document.getElementById('reader-issue-label');
-const readerPageTitle = document.getElementById('reader-page-title');
 const readerPageCount = document.getElementById('reader-page-count');
 const readerProgress = document.getElementById('reader-progress-bar');
-const readerPanels = document.getElementById('reader-panels');
-const readerThumbs = document.getElementById('reader-thumbnails');
-const prevButtons = [document.getElementById('reader-prev'), document.getElementById('reader-prev-bottom')];
-const nextButtons = [document.getElementById('reader-next'), document.getElementById('reader-next-bottom')];
 const closeButton = document.getElementById('reader-close');
-const zoomButton = document.getElementById('reader-zoom');
-const pageFigure = document.querySelector('.reader-figure');
-const artViewport = document.querySelector('.reader-art__controls');
+const prevButtons = [document.getElementById('reader-prev'), document.getElementById('reader-prev-label')];
+const nextButtons = [document.getElementById('reader-next'), document.getElementById('reader-next-label')];
+const readerStage = document.getElementById('reader-stage');
 
 let catalog = [];
 let activeIssue = null;
@@ -40,7 +34,7 @@ function renderIssueCard(issue) {
   const cover = make('span', 'issue-card__cover');
   const image = make('img');
   image.src = issue.cover;
-  image.alt = `Cover art for REDPOLY Issue ${issue.number}: ${issue.title}`;
+  image.alt = `Preview artwork for REDPOLY Issue ${issue.number}: ${issue.title}`;
   image.loading = 'lazy';
   cover.append(image, make('span', 'issue-card__number', `ISSUE ${issue.number}`), make('span', 'issue-card__cover-label', 'THE ORIGIN ISSUE'));
 
@@ -71,69 +65,26 @@ function renderCatalog(items) {
   issueCount.textContent = items.length === 1 ? 'ISSUE 01 · THE FIRST SPLASH STARTS HERE' : `${items.length} ISSUES · PICK A STORY`;
 }
 
-function renderPanelScript(panels) {
-  readerPanels.replaceChildren();
-  panels.forEach((panel, index) => {
-    const card = make('article', 'reader-panel');
-    card.append(make('span', 'reader-panel__number', String(index + 1).padStart(2, '0')));
-    if (panel.caption) card.append(make('p', 'reader-panel__caption', panel.caption));
-    (panel.dialogue || []).forEach(line => {
-      const dialogue = make('p', 'reader-dialogue');
-      dialogue.append(make('strong', '', line.speaker), document.createTextNode(' '));
-      const quote = make('q', '', line.text);
-      dialogue.append(quote);
-      card.append(dialogue);
-    });
-    readerPanels.append(card);
-  });
-}
-
-function renderPage() {
-  if (!activeIssue || !activeManifest) return;
-  const page = activeManifest.pages[activePage];
-  const pageNumber = activePage + 1;
-  const total = activeManifest.pages.length;
-  const number = String(pageNumber).padStart(2, '0');
-
-  readerTitle.textContent = activeManifest.title;
-  readerIssueLabel.textContent = `REDPOLY COMICS · ISSUE ${activeManifest.number}`;
-  readerPageTitle.textContent = page.title || `PAGE ${number}`;
-  readerPageCount.textContent = `${number} / ${String(total).padStart(2, '0')}`;
-  readerImage.src = page.image;
-  readerImage.alt = page.alt || `${activeManifest.title}, page ${pageNumber}`;
-  readerImageCaption.textContent = `ISSUE ${activeManifest.number} · PAGE ${number}`;
-  readerProgress.style.width = `${(pageNumber / total) * 100}%`;
-  renderPanelScript(page.panels || []);
-  readerThumbs.querySelectorAll('.reader-thumb').forEach((button, index) => {
-    if (index === activePage) button.setAttribute('aria-current', 'page');
-    else button.removeAttribute('aria-current');
-  });
-  prevButtons.forEach(button => { button.disabled = activePage === 0; });
-  nextButtons.forEach(button => { button.disabled = activePage === total - 1; });
-  readerImage.classList.remove('is-zoomed');
-  zoomButton.setAttribute('aria-pressed', 'false');
-  zoomButton.textContent = 'ZOOM PAGE';
-  readerPanels.scrollTop = 0;
-  if (artViewport) artViewport.scrollTop = 0;
-}
-
-function renderThumbnails() {
-  readerThumbs.replaceChildren();
-  activeManifest.pages.forEach((page, index) => {
-    const button = make('button', 'reader-thumb', String(index + 1).padStart(2, '0'));
-    button.type = 'button';
-    button.setAttribute('aria-label', `Open page ${index + 1} of ${activeManifest.pages.length}`);
-    if (index === activePage) button.setAttribute('aria-current', 'page');
-    button.addEventListener('click', () => goToPage(index));
-    readerThumbs.append(button);
-  });
-}
-
 function updateShareUrl() {
   const url = new URL(window.location.href);
   url.searchParams.set('issue', activeIssue.id);
   url.searchParams.set('page', String(activePage + 1));
   history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+}
+
+function renderPage() {
+  if (!activeManifest) return;
+  const page = activeManifest.pages[activePage];
+  const current = activePage + 1;
+  const total = activeManifest.pages.length;
+  const pageNumber = String(current).padStart(2, '0');
+
+  readerImage.src = page.image;
+  readerImage.alt = page.alt || `${activeManifest.title}, page ${current}`;
+  readerPageCount.textContent = `PAGE ${pageNumber} / ${String(total).padStart(2, '0')}`;
+  readerProgress.style.width = `${(current / total) * 100}%`;
+  prevButtons.forEach(button => { button.disabled = activePage === 0; });
+  nextButtons.forEach(button => { button.disabled = activePage === total - 1; });
 }
 
 async function openIssue(issue, pageIndex = 0, trigger = null) {
@@ -145,15 +96,15 @@ async function openIssue(issue, pageIndex = 0, trigger = null) {
     activeManifest = await response.json();
     activeIssue = issue;
     activePage = Math.min(Math.max(pageIndex, 0), activeManifest.pages.length - 1);
-    renderThumbnails();
+    readerTitle.textContent = activeManifest.title;
+    readerIssueLabel.textContent = `REDPOLY COMICS · ISSUE ${activeManifest.number}`;
     renderPage();
     if (!dialog.open) dialog.showModal();
     updateShareUrl();
     closeButton.focus();
   } catch (error) {
     console.error('Could not open comic issue:', error);
-    const message = make('p', 'shelf-status shelf-status--error', 'This issue did not load. Please try again in a moment.');
-    grid.prepend(message);
+    grid.prepend(make('p', 'shelf-status shelf-status--error', 'This issue did not load. Please try again in a moment.'));
   }
 }
 
@@ -178,17 +129,12 @@ nextButtons.forEach(button => button.addEventListener('click', () => goToPage(ac
 closeButton.addEventListener('click', closeReader);
 dialog.addEventListener('cancel', event => { event.preventDefault(); closeReader(); });
 dialog.addEventListener('click', event => { if (event.target === dialog) closeReader(); });
-zoomButton.addEventListener('click', () => {
-  const zoomed = readerImage.classList.toggle('is-zoomed');
-  zoomButton.setAttribute('aria-pressed', String(zoomed));
-  zoomButton.textContent = zoomed ? 'FIT PAGE' : 'ZOOM PAGE';
-});
 dialog.addEventListener('keydown', event => {
   if (event.key === 'ArrowRight') { event.preventDefault(); goToPage(activePage + 1); }
   if (event.key === 'ArrowLeft') { event.preventDefault(); goToPage(activePage - 1); }
 });
-artViewport.addEventListener('pointerdown', event => { touchStartX = event.clientX; }, { passive: true });
-artViewport.addEventListener('pointerup', event => {
+readerStage.addEventListener('pointerdown', event => { touchStartX = event.clientX; }, { passive: true });
+readerStage.addEventListener('pointerup', event => {
   if (touchStartX === null) return;
   const delta = event.clientX - touchStartX;
   touchStartX = null;

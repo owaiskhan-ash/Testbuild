@@ -2,67 +2,13 @@
   "id": "issue-001-origin",
   "number": "01",
   "title": "The Night the Sky Said Hello",
-  "subtitle": "A very rainy night. Four very strange arrivals. One very soggy first meeting.",
+  "subtitle": "Four mysterious friends meet on one rainy night, in six cinematic comic pages.",
   "pages": [
-    {
-      "image": "/comics/issue-001-origin/pages/page-01.png",
-      "alt": "Four-panel comic page: a storm over a hidden valley, Barsaat splashes into being, studies a puddle reflection, then notices an orange spark falling from the clouds.",
-      "panels": [
-        { "caption": "On the wettest night in a sky's-eye view...", "dialogue": [] },
-        { "caption": "One strange drop took the express puddle.", "dialogue": [{ "speaker": "Barsaat", "text": "Whoa. I just puddled into existence!" }] },
-        { "caption": "", "dialogue": [{ "speaker": "Barsaat", "text": "This reflection goes deep." }] },
-        { "caption": "A second surprise came in hot.", "dialogue": [{ "speaker": "Barsaat", "text": "Rain check—what's that orange streak?" }] }
-      ]
-    },
-    {
-      "image": "/comics/issue-001-origin/pages/page-02.png",
-      "alt": "Four-panel comic page: Agni lands in a puddle with a puff of steam, meets Barsaat, shares a tiny tail-glow, and they discover a glowing path uphill.",
-      "panels": [
-        { "caption": "The spark landed with one very small splash.", "dialogue": [{ "speaker": "Agni", "text": "I meant to make a soft landing!" }] },
-        { "caption": "", "dialogue": [{ "speaker": "Barsaat", "text": "I'm Barsaat." }, { "speaker": "Agni", "text": "Agni. I bring the heat, not the humidity." }] },
-        { "caption": "", "dialogue": [{ "speaker": "Agni", "text": "This puddle's a little steamy." }, { "speaker": "Barsaat", "text": "It's a current situation." }] },
-        { "caption": "A golden trail curled uphill.", "dialogue": [{ "speaker": "Agni", "text": "Let's follow it. I'm fired up for this idea!" }] }
-      ]
-    },
-    {
-      "image": "/comics/issue-001-origin/pages/page-03.png",
-      "alt": "Four-panel comic page: a golden glow reveals Noor floating down through the rain, greeting Barsaat and Agni, then guiding them toward a hill.",
-      "panels": [
-        { "caption": "A golden glow drifted out of the storm.", "dialogue": [] },
-        { "caption": "", "dialogue": [{ "speaker": "Noor", "text": "Hi! I'm Noor. I was moth-ivated to come say hello." }] },
-        { "caption": "", "dialogue": [{ "speaker": "Agni", "text": "This meeting keeps getting brighter." }, { "speaker": "Barsaat", "text": "And wetter." }] },
-        { "caption": "Noor's glow revealed a path up the hill.", "dialogue": [{ "speaker": "Noor", "text": "Shall we follow the light?" }, { "speaker": "Agni", "text": "Sure. Let's wing it!" }] }
-      ]
-    },
-    {
-      "image": "/comics/issue-001-origin/pages/page-04.png",
-      "alt": "Four-panel comic page: the hillside rumbles, Aarav emerges from a mossy boulder, stops a rolling rock, and meets the other three creatures.",
-      "panels": [
-        { "caption": "Up the hill: rumble, grumble, tumble!", "dialogue": [{ "speaker": "Barsaat", "text": "Was that thunder—or a very round hello?" }] },
-        { "caption": "", "dialogue": [{ "speaker": "Aarav", "text": "I didn't roll in. The hill rolled me here." }] },
-        { "caption": "", "dialogue": [{ "speaker": "Agni", "text": "You stopped that boulder!" }, { "speaker": "Aarav", "text": "Guess I'm pretty grounded." }] },
-        { "caption": "Four strangers. One very soggy introduction.", "dialogue": [{ "speaker": "Noor", "text": "I can shed some light." }, { "speaker": "Aarav", "text": "And I'll keep things steady." }, { "speaker": "Agni", "text": "So... a crew?" }] }
-      ]
-    },
-    {
-      "image": "/comics/issue-001-origin/pages/page-05.png",
-      "alt": "Four-panel comic page: a glowing rain-orb rolls toward the stream, Barsaat redirects the water, Noor and Agni reveal a safe route, and Aarav braces a rock.",
-      "panels": [
-        { "caption": "A giant glow-drop broke loose toward the stream!", "dialogue": [{ "speaker": "Agni", "text": "That's one BIG drop!" }] },
-        { "caption": "Barsaat curled his tail to guide the rushing water.", "dialogue": [{ "speaker": "Barsaat", "text": "I'll channel it!" }] },
-        { "caption": "Noor lit the way; Agni added a gentle glow.", "dialogue": [{ "speaker": "Noor", "text": "I see the way!" }, { "speaker": "Agni", "text": "I'll light it—warmly!" }] },
-        { "caption": "Four new friends. One mighty splash.", "dialogue": [{ "speaker": "Aarav", "text": "I've got this. I'm rock-solid." }] }
-      ]
-    },
-    {
-      "image": "/comics/issue-001-origin/pages/page-06.png",
-      "alt": "Four-panel comic page: the storm orb floats safely into the clouds, the four friends celebrate, and they walk together toward a new dawn.",
-      "panels": [
-        { "caption": "Together, they sent the glow-drop safely back to the clouds.", "dialogue": [{ "speaker": "Barsaat", "text": "We really made a splash!" }] },
-        { "caption": "", "dialogue": [{ "speaker": "Agni", "text": "And a little steam." }, { "speaker": "Noor", "text": "A bright idea from a dark night." }] },
-        { "caption": "", "dialogue": [{ "speaker": "Aarav", "text": "We're a well-grounded team." }, { "speaker": "Barsaat", "text": "That pun really weighs a lot." }] },
-        { "caption": "The storm stopped. Their story had only begun.", "dialogue": [{ "speaker": "All four", "text": "To be continued!" }] }
-      ]
-    }
+    { "image": "/comics/issue-001-origin/pages/page-01.png", "alt": "Page 1: A stormy night, Barsaat splashes into being, sees a funny reflection, and spots an orange spark." },
+    { "image": "/comics/issue-001-origin/pages/page-02.png", "alt": "Page 2: Agni makes a soft splash, meets Barsaat, and discovers a glowing path with him." },
+    { "image": "/comics/issue-001-origin/pages/page-03.png", "alt": "Page 3: Noor floats out of the storm and leads Barsaat and Agni up the hill." },
+    { "image": "/comics/issue-001-origin/pages/page-04.png", "alt": "Page 4: Aarav rolls into the story, stops a boulder, and meets the other three." },
+    { "image": "/comics/issue-001-origin/pages/page-05.png", "alt": "Page 5: The four friends work together to guide a magical raindrop safely through the stream." },
+    { "image": "/comics/issue-001-origin/pages/page-06.png", "alt": "Page 6: The four friends celebrate their first adventure as the storm clears at sunrise." }
   ]
 }
