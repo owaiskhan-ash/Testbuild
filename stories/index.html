@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>REDPOLY Stories — The Comic Vault</title>
+  <meta name="description" content="Read REDPOLY's original comic-book stories. Start with Issue 01: the funny, mysterious first meeting of Barsaat, Agni, Noor and Aarav." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://redpoly.justsimpleapps.online/stories" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/redpoly/favicon.png" />
+  <link rel="shortcut icon" href="/assets/images/redpoly/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;600;700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/stories/stories.css" />
+  <script src="/stories/stories.js" defer></script>
+</head>
+<body class="stories-page">
+  <header class="stories-header">
+    <a class="stories-brand" href="/" aria-label="REDPOLY home">
+      <img src="/assets/images/redpoly/redpoly-logo.png" alt="REDPOLY" width="1353" height="711" />
+      <span>CREATURE CLUB</span>
+    </a>
+    <a class="stories-home-link" href="/">BACK TO THE CREW <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="stories-main">
+    <section class="stories-hero" aria-labelledby="stories-title">
+      <p class="stories-kicker"><span>REDPOLY COMICS</span><i aria-hidden="true"></i><span>ORIGINAL CREATURE STORIES</span></p>
+      <h1 id="stories-title">THE <span>STORY VAULT</span></h1>
+      <p class="stories-intro">Rainy nights. Strange arrivals. Big little adventures.<br />Pick an issue, turn a page, and meet the crew.</p>
+      <div class="stories-stamp" aria-hidden="true"><span>READ</span><strong>ISSUE<br />01</strong></div>
+    </section>
+
+    <section class="issue-shelf" aria-labelledby="issue-shelf-title">
+      <div class="issue-shelf__heading">
+        <div><p class="stories-overline">THE COLLECTION</p><h2 id="issue-shelf-title">PICK YOUR <span>ISSUE.</span></h2></div>
+        <p id="issue-count" class="issue-count">THE FIRST SPLASH STARTS HERE</p>
+      </div>
+      <div id="issue-grid" class="issue-grid" aria-live="polite">
+        <p class="shelf-status">Loading the story shelf…</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="stories-footer">
+    <a href="/">REDPOLY <span>— COLLECT. EXPLORE. DISPLAY.</span></a>
+    <span>ONE RAINY NIGHT. FOUR VERY BIG PERSONALITIES.</span>
+  </footer>
+
+  <dialog class="reader-dialog" id="story-reader" aria-labelledby="reader-title">
+    <div class="reader-shell">
+      <header class="reader-toolbar">
+        <div class="reader-toolbar__title">
+          <p id="reader-issue-label" class="reader-kicker">REDPOLY COMICS · ISSUE 01</p>
+          <h2 id="reader-title">The Night the Sky Said Hello</h2>
+        </div>
+        <div class="reader-toolbar__actions">
+          <button class="reader-zoom" id="reader-zoom" type="button" aria-pressed="false">ZOOM PAGE</button>
+          <button class="reader-close" id="reader-close" type="button" aria-label="Close comic reader">×</button>
+        </div>
+      </header>
+
+      <div class="reader-body" id="reader-body">
+        <section class="reader-art" aria-label="Comic page image">
+          <div class="reader-art__controls">
+            <button class="reader-arrow" id="reader-prev" type="button" aria-label="Previous page">←</button>
+            <figure class="reader-figure">
+              <img id="reader-image" src="/comics/issue-001-origin/pages/page-01.png" alt="" />
+              <figcaption id="reader-image-caption">Issue 01 · Page 1</figcaption>
+            </figure>
+            <button class="reader-arrow" id="reader-next" type="button" aria-label="Next page">→</button>
+          </div>
+          <p class="reader-swipe-hint">Use the arrows or swipe to turn the page <span aria-hidden="true">↔</span></p>
+        </section>
+
+        <aside class="reader-script" aria-label="Comic dialogue and captions">
+          <div class="reader-page-heading">
+            <div><span class="reader-page-label">NOW READING</span><h3 id="reader-page-title">PAGE 01</h3></div>
+            <p id="reader-page-count" class="reader-page-count" aria-live="polite">01 / 06</p>
+          </div>
+          <div class="reader-progress" aria-hidden="true"><span id="reader-progress-bar"></span></div>
+          <div id="reader-panels" class="reader-panels" aria-live="polite"></div>
+          <nav id="reader-thumbnails" class="reader-thumbnails" aria-label="Choose comic page"></nav>
+          <div class="reader-bottom-nav">
+            <button id="reader-prev-bottom" type="button">← PREVIOUS</button>
+            <button id="reader-next-bottom" type="button">NEXT PAGE →</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

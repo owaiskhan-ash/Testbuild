@@ -1,3 +1,3 @@
 # Comics
 
-Keep each comic in its own numbered issue folder, such as `issue-002-short-title/`. Store its script and production notes with the issue, and name finished page art sequentially (`page-001.png`, `page-002.png`, and so on). The first folder contains the existing origin-story storyboard.
+Keep each comic in its own numbered issue folder, such as `issue-002-short-title/`. Store its script (`issue.json`) and production notes with the issue, and name finished page art sequentially (`pages/page-01.png`, `pages/page-02.png`, and so on). Add reader-ready issue metadata to `catalog.json`. Issue 01 is the first complete six-page story; its original homepage storyboard is retained with the issue.
