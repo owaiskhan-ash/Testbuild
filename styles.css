@@ -340,25 +340,15 @@ html.motion-ready .btn-lime:hover{filter:drop-shadow(5px 5px 0 rgba(200,255,0,.2
   html.motion-ready .p-card.in:hover .p-card__img img,html.motion-ready .c-card[data-reveal].in:hover>img{transform:none}
 }
 
-/* REDPOLY crew footer: face-only crops of the canonical creature art. */
-.foot__faces{display:flex;align-items:flex-start;gap:10px;margin:0 auto}
-.foot__face{--face-color:var(--lime);width:62px;display:flex;flex-direction:column;align-items:center;gap:5px;flex:none}
-.foot__face img{display:block;width:60px;height:60px;object-fit:cover;object-position:center;border-radius:50%;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.22),transparent 55%),#171717;border:2px solid var(--face-color);box-shadow:0 3px 0 rgba(0,0,0,.55)}
-.foot__face figcaption{font-size:8px;line-height:1;font-weight:900;letter-spacing:.7px;color:var(--face-color)}
-.foot__face--barsaat{--face-color:#19C9D2}
-.foot__face--agni{--face-color:#FF6B1A}
-.foot__face--noor{--face-color:#B29BFF}
-.foot__face--aarav{--face-color:#9DEB32}
-html.motion-ready .foot__face{transition:transform .2s ease}
-html.motion-ready .foot__face img{transition:transform .24s ease,box-shadow .24s ease}
-html.motion-ready .foot__face:hover{transform:translateY(-5px) rotate(-3deg)}
-html.motion-ready .foot__face:hover img{transform:scale(1.07);box-shadow:0 7px 0 rgba(0,0,0,.45)}
+/* REDPOLY footer crew portrait: one transparent face lineup, matched to the character guide. */
+.foot__crew{display:block;width:420px;max-width:100%;height:auto;max-height:170px;object-fit:contain;margin:0 auto;filter:drop-shadow(0 5px 0 rgba(0,0,0,.4))}
+html.motion-ready .foot__crew{transition:transform .24s ease,filter .24s ease}
+html.motion-ready .foot__crew:hover{transform:translateY(-4px) scale(1.015);filter:drop-shadow(0 9px 0 rgba(0,0,0,.32))}
 @media(max-width:800px){
   .foot__inner{justify-content:center;flex-wrap:wrap;text-align:center}
-  .foot__faces{order:3;width:100%;justify-content:center}
   .foot__brand{order:1;width:100%}
   .foot__brand span{display:block;margin:5px 0 0}
   .foot__more{order:2;margin-left:auto}
+  .foot__crew{order:3;width:min(460px,100%);max-height:180px}
 }
-@media(max-width:420px){.foot__faces{gap:7px}.foot__face{width:56px}.foot__face img{width:54px;height:54px}}
-@media(prefers-reduced-motion:reduce){html.motion-ready .foot__face,html.motion-ready .foot__face img{transition:none}}
+@media(prefers-reduced-motion:reduce){html.motion-ready .foot__crew{transition:none}}
