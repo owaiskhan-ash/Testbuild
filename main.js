@@ -21,7 +21,7 @@
       var original = btn.innerHTML;
       btn.classList.add('added');
       btn.innerHTML = '✓ ADDED TO CART';
-      showToast(name + ' added to cart — $39 USD');
+      showToast(name + ' added to cart — ₹3,299');
       setTimeout(function () {
         btn.classList.remove('added');
         btn.innerHTML = original;
