@@ -1,11 +1,10 @@
-# Testbuild
+# CHOMPKIT — Big Attitude
 
-**Artisan** — a retro, hand-illustrated landing page (static HTML + CSS, no build step).
+Collectible vinyl figures landing page (static HTML + CSS + JS, no build step).
 
-- `index.html` – page markup
-- `styles.css` – styles (scales proportionally from a 700-unit design grid; re-flows below 760px)
-- `main.js` – cinematic effects (hero parallax and day-to-dusk, pinned card sequence, tilt, custom cursor, magnetic buttons, scroll reveals, generated ambient sound); the page still works without JavaScript
-- `assets/images/` – generated PNG illustrations (layered hero scene, 3 cards, 4 plant badges, artisans)
-- `assets/fonts/` – self-hosted fonts (Berkshire Swash, Kaushan Script, Bitter — all SIL OFL)
+- `index.html` – page markup (hero, limited edition, featured figures, collections, crew footer)
+- `styles.css` – styles (lime `#C8FF00` / orange `#FF6B1A` / black / cream, Anton + Archivo + Permanent Marker)
+- `main.js` – add-to-cart toast, crew form, scroll reveal
+- `assets/images/chompkit/` – exact PNG crops from the reference screenshot (hero boxes, Chomp Forever hero, 4 product cards, 3 collection cards)
 
-Open `index.html` in a browser, or serve the folder with any static server (e.g. `npx serve .`).
+Open `index.html` in a browser, or serve with any static server (e.g. `npx serve .` / `python3 -m http.server`).
