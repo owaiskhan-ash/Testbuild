@@ -1,279 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Artisan — Corden with ouy Artisans</title>
-  <meta name="description" content="Artisan — a retro, hand-illustrated landing page for handmade goods and the people who make them." />
-  <link rel="stylesheet" href="styles.css" />
-  <script>
-    /* Flag JS support before first paint; skip the opening curtain on repeat views this session. */
-    (function (d) {
-      d.classList.add('js');
-      try { if (sessionStorage.getItem('artisan-intro')) d.classList.add('no-intro'); } catch (e) {}
-    })(document.documentElement);
-  </script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CHOMPKIT — Big Attitude. Collectible Vinyl Figures</title>
+<meta name="description" content="Collectible vinyl figures for dreamers, misfits and monster lovers. Bold designs. Weirder worlds. Made to stand out." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ============ OPENING CURTAIN ============ -->
-  <div class="curtain" aria-hidden="true">
-    <span class="curtain__logo">Artisan</span>
-    <span class="curtain__rule"></span>
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero__splatter" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__left">
+      <h1 class="hero__title">BIG ATTITUDE<span class="dot">.</span><span class="hero__underline" aria-hidden="true"></span></h1>
+      <p class="hero__copy">Collectible vinyl figures for dreamers,<br />misfits and monster lovers. Bold designs.<br />Weirder worlds. Made to stand out.</p>
+      <a class="btn-lime" href="#featured">SHOP THE COLLECTION <span aria-hidden="true">→</span></a>
+      <ul class="hero__feats">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-9 5 4 5-7 5 7 5-4-1 9H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span>VINYL FIGURES</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 7-7 11L5 10l7-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 10h14M12 3l-3 7 3 11 3-11-3-7z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+          <span>LIMITED EDITIONS</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v10l-8 4-8-4V7l8-4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 7l8 4 8-4M12 11v10" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          <span>WORLDWIDE SHIPPING</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="hero__right">
+      <div class="hero__boxes">
+        <img class="box box--chomp-mini" src="assets/images/chompkit/hero-chomp-box.png?v=soft3d-png-20261114" alt="Chomp The Curious One box" />
+        <figure class="box box--spark">
+          <img src="assets/images/chompkit/hero-spark-box.png?v=soft3d-png-20261114" alt="Spark The Chaotic One vinyl figure in box, number 02" />
+          <figcaption class="box__label box__label--top"><span>CHOMPKIT</span><em>02</em></figcaption>
+          <figcaption class="box__label box__label--bottom"><strong>SPARK</strong><small>THE CHAOTIC ONE</small></figcaption>
+        </figure>
+        <figure class="box box--luma">
+          <img src="assets/images/chompkit/hero-luma-box.png?v=soft3d-png-20261114" alt="Luma The Mysterious One vinyl figure in box, number 03" />
+          <figcaption class="box__label box__label--top"><span>CHOMPKIT</span><em>03</em></figcaption>
+          <figcaption class="box__label box__label--bottom"><strong>LUMA</strong><small>THE MYSTERIOUS ONE</small></figcaption>
+        </figure>
+        <p class="hero__side-note">COLLECT<br />EXPLORE<br />DISPLAY<br />BELONG.
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l-1-8 4 3 5-6 5 6 4-3-1 8H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </p>
+      </div>
+    </div>
   </div>
+  <div class="hero__rocks" aria-hidden="true"></div>
+</section>
 
-  <!-- ============ FILM OVERLAYS ============ -->
-  <div class="letterbox letterbox--top" aria-hidden="true"></div>
-  <div class="letterbox letterbox--bottom" aria-hidden="true"></div>
-  <div class="vignette" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
-
-  <button class="sound" type="button" aria-pressed="false" aria-label="Turn ambient sound on" title="Ambient sound">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M4 9.500h3.500L12 6v12l-4.5-3.500H4z" />
-      <path class="sound__wave" d="M15 9.200a4 4 0 0 1 0 5.600M17.3 7a7 7 0 0 1 0 10" />
-      <path class="sound__mute" d="M15.5 9.500l5 5M20.5 9.500l-5 5" />
-    </svg>
-  </button>
-
-  <!-- ============ NAV ============ -->
-  <header class="nav">
-    <div class="wrap nav__inner">
-      <a class="logo" href="#top" aria-label="Artisan home">Artisan</a>
-
-      <nav class="nav__links" aria-label="Primary">
-        <a href="#top">Home</a>
-        <a href="#crafts">Shop</a>
-        <a href="#plants">Community</a>
-        <a href="#story" class="has-caret">Contact
-          <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M0 0h10L5 6z" /></svg>
-        </a>
-      </nav>
-
-      <div class="nav__actions">
-        <a class="dot dot--red" href="#crafts" aria-label="Cart">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9h12l-1.2 10H7.200z" /><path d="M9 9a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2" /></svg>
-        </a>
-        <a class="dot dot--teal" href="#story" aria-label="Search">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="5" fill="none" stroke="currentColor" stroke-width="2.4" /><path d="M14.5 14.5 19 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" /></svg>
-        </a>
-        <a class="dot dot--mint" href="#story" aria-label="Account">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5" /><path d="M5 19c.6-4 3.4-5.5 7-5.500s6.4 1.5 7 5.500z" /></svg>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <main id="top">
-
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <!-- layered scene: back plate, drifting clouds, water shimmer, boats, foreground island -->
-      <div class="scene" aria-hidden="true">
-        <div class="scene__zoom">
-          <div class="layer layer--back" data-depth="0.1">
-            <img src="assets/images/hero-back.png" alt="" width="1312" height="816" />
-            <span class="rays"></span>
-          </div>
-          <div class="layer layer--clouds" data-depth="0.22">
-            <img class="cloud cloud--a" src="assets/images/cloud.png" alt="" width="720" height="311" />
-            <img class="cloud cloud--b" src="assets/images/cloud.png" alt="" width="720" height="311" />
-            <span class="flock">
-              <svg class="bird bird--1" viewBox="0 0 24 12"><path d="M1 8Q6 1 12 7Q18 1 23 8" /></svg>
-              <svg class="bird bird--2" viewBox="0 0 24 12"><path d="M1 8Q6 1 12 7Q18 1 23 8" /></svg>
-              <svg class="bird bird--3" viewBox="0 0 24 12"><path d="M1 8Q6 1 12 7Q18 1 23 8" /></svg>
-              <svg class="bird bird--4" viewBox="0 0 24 12"><path d="M1 8Q6 1 12 7Q18 1 23 8" /></svg>
-            </span>
-          </div>
-          <div class="layer layer--water" data-depth="0.3">
-            <span class="shimmer shimmer--a"></span>
-            <span class="shimmer shimmer--b"></span>
-          </div>
-          <div class="layer layer--boats" data-depth="0.45">
-            <span class="mist mist--a"></span>
-            <span class="mist mist--b"></span>
-            <span class="boat boat--1">
-              <i class="boat__wake"></i>
-              <img class="boat__ref" src="assets/images/boat.png" alt="" width="260" height="313" />
-              <img class="boat__img" src="assets/images/boat.png" alt="" width="260" height="313" />
-            </span>
-            <span class="boat boat--2">
-              <i class="boat__wake"></i>
-              <img class="boat__ref" src="assets/images/boat.png" alt="" width="260" height="313" />
-              <img class="boat__img" src="assets/images/boat.png" alt="" width="260" height="313" />
-            </span>
-            <span class="boat boat--3">
-              <i class="boat__wake"></i>
-              <img class="boat__ref" src="assets/images/boat.png" alt="" width="260" height="313" />
-              <img class="boat__img" src="assets/images/boat.png" alt="" width="260" height="313" />
-            </span>
-          </div>
-          <div class="scene__dusk"></div>
-          <div class="layer layer--front" data-depth="0.8">
-            <span class="smoke"><i></i><i></i><i></i><i></i></span>
-            <img src="assets/images/hero-front.png" alt="" width="1312" height="816" />
-            <img class="front-dusk" src="assets/images/hero-front-dusk.png" alt="" width="1312" height="816" loading="lazy" />
-          </div>
-        </div>
-        <img class="scene__foam" src="assets/images/hero-foam.png" alt="" width="1312" height="131" />
-      </div>
-      <div class="wrap hero__inner">
-        <h1 class="hero__title">
-          <span class="hero__line hero__l1"><span>Corden</span></span>
-          <span class="hero__line hero__l2"><span>with ouy</span></span>
-          <span class="hero__line hero__l3"><span>Artisans</span></span>
-        </h1>
-        <a class="btn" href="#crafts">Discover More</a>
-      </div>
-    </section>
-
-    <!-- ============ CRAFTS (dark) ============ -->
-    <div class="pin">
-    <section class="crafts" id="crafts">
-      <img class="wipe wipe--top" src="assets/images/hero-foam.png" alt="" width="1312" height="131" aria-hidden="true" />
-      <img class="wipe wipe--bottom" src="assets/images/hero-foam.png" alt="" width="1312" height="131" aria-hidden="true" />
-      <div class="wrap">
-        <h2 class="crafts__title" data-reveal="title"><span class="ink-line">Free-Lusks</span></h2>
-        <p class="crafts__sub" data-reveal style="--d:1">Carefully picked, handmade and local</p>
-
-        <div class="cards">
-          <article class="card" data-reveal style="--d:1">
-            <a class="card__media" href="#plants">
-              <img src="assets/images/card-botanicals.png" alt="Banana, apple, palm frond and flower illustration" width="800" height="537" />
-              <span class="card__corner" aria-hidden="true"><i></i></span>
-            </a>
-            <div class="card__body">
-              <h3>Looc Idesjon</h3>
-              <p>Seasonal botanicals gathered fresh from small local growers.</p>
-            </div>
-          </article>
-
-          <article class="card" data-reveal style="--d:2">
-            <a class="card__media" href="#plants">
-              <img src="assets/images/card-tools.png" alt="Wooden tool with chili peppers illustration" width="800" height="537" />
-              <span class="card__corner" aria-hidden="true"><i></i></span>
-            </a>
-            <div class="card__body">
-              <h3>Artisan Mananet Fasious</h3>
-              <p>Hand-turned kitchen tools, made slowly and built to last.</p>
-            </div>
-          </article>
-
-          <article class="card" data-reveal style="--d:3">
-            <a class="card__media" href="#plants">
-              <img src="assets/images/card-leather.png" alt="Handcrafted leather clog illustration" width="800" height="537" />
-              <span class="card__corner" aria-hidden="true"><i></i></span>
-            </a>
-            <div class="card__body">
-              <h3>Artisan Esonausle Yiasks</h3>
-              <p>Leather goods cut and stitched in family workshops.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+<!-- ================= LIMITED EDITION ================= -->
+<section class="limited" id="limited">
+  <div class="wrap limited__grid">
+    <div class="limited__left">
+      <span class="tag-orange">LIMITED EDITION</span>
+      <h2 class="limited__title"><span class="t-black">CHOMP</span><span class="t-lime">FOREVER</span></h2>
+      <p class="limited__sub">THE CURIOUS ONE</p>
+      <p class="limited__copy">Our signature dino is back in a special<br />limited edition vinyl figure. Brighter colors.<br />Bigger attitude. Same big appetite<br />for adventure.</p>
+      <ul class="limited__feats">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.5 5.6 6 .6-4.5 4 1.3 5.8L12 16l-5.3 3 1.3-5.8-4.5-4 6-.6L12 3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          <span><strong>LIMITED</strong><br />500 PCS</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9.5" cy="9" r="1" fill="currentColor"/><circle cx="14.5" cy="9" r="1" fill="currentColor"/><path d="M8 15c1 2 7 2 8 0" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          <span><strong>PREMIUM</strong><br />VINYL</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+          <span><strong>COLLECTOR</strong><br />PACKAGING</span>
+        </li>
+      </ul>
     </div>
 
-    <!-- ============ PLANTS + STORY (cream) ============ -->
-    <section class="cream">
-      <div class="wrap">
+    <div class="limited__center">
+      <svg class="bolt bolt--a" viewBox="0 0 60 60" aria-hidden="true"><path d="M10 50 L25 20 L18 20 L35 5 L30 25 L42 25 L20 55 L24 35 L12 35 Z" fill="#C8FF00" stroke="#0A0A0A" stroke-width="2" stroke-linejoin="round"/></svg>
+      <svg class="bolt bolt--b" viewBox="0 0 60 60" aria-hidden="true"><path d="M10 50 L25 20 L18 20 L35 5 L30 25 L42 25 L20 55 L24 35 L12 35 Z" fill="#C8FF00" stroke="#0A0A0A" stroke-width="2" stroke-linejoin="round"/></svg>
+      <img class="chomp-hero" src="assets/images/chompkit/chomp-hero.png?v=soft3d-png-20261114" alt="Chomp Forever limited edition green dinosaur vinyl figure with orange star eye patch and big teeth — soft 3D" />
+      <svg class="scribble" viewBox="0 0 300 24" aria-hidden="true"><path d="M2 14 Q30 4 60 12 T120 12 T180 12 T240 12 T298 10" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round"/></svg>
+    </div>
 
-        <div class="badges" id="plants">
-          <a class="badge" data-reveal="stamp" style="--d:0" href="#story">
-            <span class="badge__art"><img src="assets/images/plant-grass.png" alt="Grass plant in a terracotta pot" width="640" height="631" /></span>
-            <span class="badge__name">Wild Fern<br />Terracotta Planter</span>
-            <span class="badge__price">$ 32 +</span>
-          </a>
-          <a class="badge" data-reveal="stamp" style="--d:1" href="#story">
-            <span class="badge__art"><img src="assets/images/plant-round-pot.png" alt="Small plant in a round clay pot" width="640" height="630" /></span>
-            <span class="badge__name">Artisan Round<br />Bowl Pot</span>
-            <span class="badge__price">$ 27 +</span>
-          </a>
-          <a class="badge" data-reveal="stamp" style="--d:2" href="#story">
-            <span class="badge__art"><img src="assets/images/plant-pots.png" alt="Two terracotta pots, one with a plant" width="640" height="639" /></span>
-            <span class="badge__name">Garden Jar<br />&amp; Seedling Set</span>
-            <span class="badge__price">$ 21 +</span>
-          </a>
-          <a class="badge" data-reveal="stamp" style="--d:3" href="#story">
-            <span class="badge__art"><img src="assets/images/plant-still-life.png" alt="Plant, glass bottle and bulbs still life" width="640" height="630" /></span>
-            <span class="badge__name">Apothecary<br />Workbench Kit</span>
-            <span class="badge__price">$ 38 +</span>
-          </a>
-        </div>
-
-        <div class="story" id="story">
-          <div class="story__left">
-            <h2 class="story__title" data-reveal="title">
-              <svg class="story__flourish" viewBox="0 0 120 60" aria-hidden="true">
-                <path d="M4 44c18-30 46-40 60-30s-6 30-20 22 10-34 40-30 30 22 20 30" pathLength="1" />
-                <path d="M30 14c14-12 34-12 44-4M70 30c12-10 30-12 44-6" pathLength="1" />
-              </svg>
-              <span class="story__t1 ink-line">Lou <small>of</small></span>
-              <span class="story__t2 ink-line">Sortiduian</span>
-            </h2>
-            <p data-reveal style="--d:4">Every piece begins in the hands of a maker we know by name. We travel from workshop to workshop, gathering small batches of honest goods, so that each one arrives at your door with its story intact.</p>
-          </div>
-
-          <div class="story__art" data-reveal="zoom" style="--d:1">
-            <div class="duo">
-              <span class="duo__blob duo__blob--teal" data-par="-16"></span>
-              <span class="duo__blob duo__blob--peach" data-par="-7"></span>
-              <img class="duo__people" data-par="9" src="assets/images/artisans-people.png" alt="Two artisans talking at a workbench" width="640" height="606" />
-            </div>
-          </div>
-
-          <div class="story__right" data-reveal style="--d:2">
-            <p>Two generations share one bench in our studio. Old techniques are passed along by hand, new ideas are welcomed with a grin, and nothing leaves the table until both agree it is ready. That patience is what you feel when you hold the finished piece — made to be used, loved and kept for years.</p>
-
-            <div class="trust">
-              <span class="trust__label">Trooc</span>
-              <span class="trust__mark">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c1 3 1 5 0 7 2-2 4-3 7-3-1 3-3 5-6 6 3 0 5 1 7 3-3 1-6 0-8-2 0 2 0 4 1 7h-2c1-3 1-5 1-7-2 2-5 3-8 2 2-2 4-3 7-3-3-1-5-3-6-6 3 0 5 1 7 3-1-2-1-4 0-7z" /></svg>
-                <em>Handmade<br />Guild</em>
-              </span>
-              <span class="trust__mark">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7zm0 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" /></svg>
-                <em>Local<br />Made</em>
-              </span>
-            </div>
-
-            <form class="signup" onsubmit="return false">
-              <button class="signup__btn" type="submit" aria-label="Subscribe">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l2.3 5.2 5.7.6-4.3 3.8 1.3 5.6-5-3-5 3 1.3-5.600L4 9.800l5.7-.600z" /></svg>
-              </button>
-              <label class="signup__field signup__field--select">
-                <span class="sr-only">Topic</span>
-                <select>
-                  <option>Workshops</option>
-                  <option>New arrivals</option>
-                  <option>Stories</option>
-                </select>
-                <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M0 0h10L5 6z" /></svg>
-              </label>
-              <label class="signup__field">
-                <span class="sr-only">Email</span>
-                <input type="email" placeholder="Your email" />
-              </label>
-            </form>
-          </div>
-        </div>
-
-        <footer class="foot" data-reveal>
-          <p>Made by hand, with care, in small batches. <a href="#top">Back to top</a></p>
-          <ul class="foot__social" aria-label="Social links">
-            <li><a class="s s--dark" href="#top" aria-label="Facebook">f</a></li>
-            <li><a class="s s--red" href="#top" aria-label="Pinterest">p</a></li>
-            <li><a class="s s--red" href="#top" aria-label="Journal">j</a></li>
-            <li><a class="s s--mint" href="#top" aria-label="Instagram">o</a></li>
-            <li><a class="s s--teal" href="#top" aria-label="Twitter">t</a></li>
-            <li><a class="s s--red" href="#top" aria-label="Email">e</a></li>
-          </ul>
-        </footer>
-
+    <div class="limited__right">
+      <div class="price-badge">
+        <span class="price-badge__only">ONLY</span>
+        <span class="price-badge__amount">$49</span>
+        <span class="price-badge__usd">USD</span>
+        <span class="price-badge__lines" aria-hidden="true"><i></i><i></i><i></i></span>
       </div>
-    </section>
-  </main>
+      <svg class="price-arrow" viewBox="0 0 60 40" aria-hidden="true"><path d="M55 5 Q30 5 15 25" fill="none" stroke="#FF6B1A" stroke-width="4" stroke-linecap="round"/><path d="M8 18 L15 28 L24 20" fill="none" stroke="#FF6B1A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p class="hand-note">SAME<br />LITTLE GUY.<br />BIGGER<br />ATTITUDE.
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l-1-8 4 3 5-6 5 6 4-3-1 8H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </p>
+    </div>
+  </div>
+</section>
 
-  <script src="main.js" defer></script>
+<!-- ================= FEATURED FIGURES ================= -->
+<section class="featured" id="featured">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 class="section-head__title">FEATURED <span class="lime">FIGURES</span>
+        <svg class="crown crown--orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-9 5 4 5-7 5 7 5-4-1 9H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </h2>
+      <p class="section-head__sub">Designer monsters. Premium vinyl. Limitless attitude.</p>
+      <a class="section-head__link" href="#collections">VIEW ALL PRODUCTS <span aria-hidden="true">→</span></a>
+    </header>
+
+    <div class="cards">
+      <article class="p-card">
+        <div class="p-card__img">
+          <img src="assets/images/chompkit/card-chomp.png?v=soft3d-png-20261114" alt="Chomp The Curious One green dinosaur vinyl figure — soft 3D" />
+          <span class="stock">IN STOCK</span>
+          <button class="heart" type="button" aria-label="Add Chomp to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6C9 5 11 7 12 8.5 13 7 15 5 17.5 5c3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="p-card__body">
+          <h3>CHOMP</h3>
+          <p class="p-card__sub">THE CURIOUS ONE</p>
+          <p class="p-card__price">$39 <span>USD</span></p>
+          <button class="add-btn" type="button" data-name="CHOMP"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h3l2 12h11l2-8H7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.6" fill="currentColor"/><circle cx="18" cy="20" r="1.6" fill="currentColor"/></svg> ADD TO CART</button>
+        </div>
+      </article>
+
+      <article class="p-card">
+        <div class="p-card__img">
+          <img src="assets/images/chompkit/card-spark.png?v=soft3d-png-20261114" alt="Spark The Chaotic One orange flame monster vinyl figure — soft 3D" />
+          <span class="stock">IN STOCK</span>
+          <button class="heart" type="button" aria-label="Add Spark to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6C9 5 11 7 12 8.5 13 7 15 5 17.5 5c3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="p-card__body">
+          <h3>SPARK</h3>
+          <p class="p-card__sub">THE CHAOTIC ONE</p>
+          <p class="p-card__price">$39 <span>USD</span></p>
+          <button class="add-btn" type="button" data-name="SPARK"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h3l2 12h11l2-8H7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.6" fill="currentColor"/><circle cx="18" cy="20" r="1.6" fill="currentColor"/></svg> ADD TO CART</button>
+        </div>
+      </article>
+
+      <article class="p-card">
+        <div class="p-card__img">
+          <img src="assets/images/chompkit/card-luma.png?v=soft3d-png-20261114" alt="Luma The Mysterious One black hooded monster vinyl figure — soft 3D" />
+          <span class="stock">IN STOCK</span>
+          <span class="card-crown" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 18l-1-9 5 4 5-7 5 7 5-4-1 9H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+          <button class="heart" type="button" aria-label="Add Luma to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6C9 5 11 7 12 8.5 13 7 15 5 17.5 5c3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="p-card__body">
+          <h3>LUMA</h3>
+          <p class="p-card__sub">THE MYSTERIOUS ONE</p>
+          <p class="p-card__price">$39 <span>USD</span></p>
+          <button class="add-btn" type="button" data-name="LUMA"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h3l2 12h11l2-8H7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.6" fill="currentColor"/><circle cx="18" cy="20" r="1.6" fill="currentColor"/></svg> ADD TO CART</button>
+        </div>
+      </article>
+
+      <article class="p-card">
+        <div class="p-card__img">
+          <img src="assets/images/chompkit/card-bronto.png?v=soft3d-png-20261114" alt="Bronto The Gentle Giant teal rhino vinyl figure — soft 3D" />
+          <span class="stock">IN STOCK</span>
+          <span class="card-crown" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 18l-1-9 5 4 5-7 5 7 5-4-1 9H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+          <button class="heart" type="button" aria-label="Add Bronto to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6C9 5 11 7 12 8.5 13 7 15 5 17.5 5c3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="p-card__body">
+          <h3>BRONTO</h3>
+          <p class="p-card__sub">THE GENTLE GIANT</p>
+          <p class="p-card__price">$39 <span>USD</span></p>
+          <button class="add-btn" type="button" data-name="BRONTO"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h3l2 12h11l2-8H7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.6" fill="currentColor"/><circle cx="18" cy="20" r="1.6" fill="currentColor"/></svg> ADD TO CART</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPLORE COLLECTIONS ================= -->
+<section class="collections" id="collections">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 class="section-head__title">EXPLORE OUR <span class="lime">COLLECTIONS</span>
+        <svg class="crown crown--orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-9 5 4 5-7 5 7 5-4-1 9H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </h2>
+      <p class="section-head__sub section-head__sub--right">Different monsters. Different worlds.<br />Find your favorites.</p>
+    </header>
+
+    <div class="collections__grid">
+      <a class="c-card c-card--vinyl" href="#featured" aria-label="Shop Vinyl Figures collection">
+        <img src="assets/images/chompkit/collection-vinyl.png?v=soft3d-png-20261114" alt="Chomp soft 3D on lime background" />
+        <span class="c-card__num">01</span>
+        <span class="c-card__crown" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 18l-1-9 5 4 5-7 5 7 5-4-1 9H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <span class="c-card__body">
+          <strong>VINYL FIGURES</strong>
+          <small>Signature characters, limited editions<br />and exclusive releases.</small>
+          <em>SHOP FIGURES →</em>
+        </span>
+      </a>
+      <a class="c-card c-card--art" href="#featured" aria-label="Shop Art Toys collection">
+        <img src="assets/images/chompkit/collection-art.png?v=soft3d-png-20261114" alt="Spark soft 3D on orange background" />
+        <span class="c-card__num">02</span>
+        <span class="c-card__crown" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 18l-1-9 5 4 5-7 5 7 5-4-1 9H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <span class="c-card__body">
+          <strong>ART TOYS</strong>
+          <small>Bigger pieces. Bolder designs.<br />For serious collectors.</small>
+          <em>SHOP ART TOYS →</em>
+        </span>
+      </a>
+      <a class="c-card c-card--accessories" href="#featured" aria-label="Shop Accessories collection">
+        <img src="assets/images/chompkit/collection-accessories.png?v=soft3d-png-20261114" alt="Luma soft 3D on cream background" />
+        <span class="c-card__num">03</span>
+        <span class="c-card__crown" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 18l-1-9 5 4 5-7 5 7 5-4-1 9H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <span class="c-card__body">
+          <strong>ACCESSORIES</strong>
+          <small>Pins, prints, apparel and more<br />to rep your monsters.</small>
+          <em>SHOP ACCESSORIES →</em>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CREW / FOOTER ================= -->
+<section class="crew">
+  <div class="wrap crew__inner">
+    <div class="crew__left">
+      <h2>JOIN THE CHOMPKIT CREW</h2>
+      <p>Get early access to drops, secret figures and crew-only deals. No spam — just monsters.</p>
+    </div>
+    <form class="crew__form" id="crewForm">
+      <label class="sr-only" for="crewEmail">Email address</label>
+      <input id="crewEmail" type="email" placeholder="your@email.com" required />
+      <button type="submit">JOIN NOW →</button>
+    </form>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <p class="foot__brand">CHOMPKIT <span>© 2026 — Collect. Explore. Display. Belong.</span></p>
+    <p class="foot__more">MORE<br />MONSTERS.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="main.js" defer></script>
 </body>
 </html>
