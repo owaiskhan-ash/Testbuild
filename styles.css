@@ -238,8 +238,6 @@ html.motion-ready .c-card[data-reveal].in:hover>img{transform:scale(1.045)}
   0%{transform:rotate(-2deg) scaleX(0)}
   100%{transform:rotate(-2deg) scaleX(1)}
 }
-  50%{transform:rotate(1deg) translateY(-4px)}
-}
 @keyframes badge-pop{
   0%{opacity:0;transform:rotate(7deg) scale(.82)}
   76%{opacity:1;transform:rotate(7deg) scale(1.055)}
@@ -299,4 +297,45 @@ html.motion-ready .box--noor{animation:box-float-noor 5.8s .7s ease-in-out infin
   .box__label--bottom small{font-size:7px;letter-spacing:.35px}
   .barsaat-hero{max-height:380px}
   .price-badge__amount{font-size:46px}
+}
+
+/* Artsy kinetic type, staggered scroll reveals, and expressive hover states. */
+html.motion-ready [data-reveal]{transition-delay:calc(var(--reveal-index,0) * 80ms)}
+html.motion-ready .p-card[data-reveal]{transform:translateY(42px) rotate(-2deg) scale(.94);filter:blur(2px)}
+html.motion-ready .c-card[data-reveal]{transform:translateY(48px) rotate(1.5deg) scale(.95);filter:blur(2px)}
+html.motion-ready .limited__center[data-reveal],html.motion-ready .limited__right[data-reveal],html.motion-ready .section-head[data-reveal],html.motion-ready .limited__left[data-reveal],html.motion-ready .crew__inner[data-reveal]{transform:translateY(24px);filter:blur(1px)}
+html.motion-ready [data-reveal].in{filter:blur(0);transition-delay:calc(var(--reveal-index,0) * 80ms)}
+html.motion-ready .motion-word{display:inline-block;opacity:0;transform:translateY(.62em) rotate(2deg);filter:blur(4px);will-change:transform,opacity,filter}
+html.motion-ready .text-reveal.text-in .motion-word{animation:kinetic-word-in .54s cubic-bezier(.2,.78,.2,1) calc(var(--word-index,0) * 34ms) both}
+html.motion-ready .limited__title .motion-word{transform:translateY(.5em) rotate(-3deg)}
+html.motion-ready .section-head__title .motion-word{transform:translateY(.55em) rotate(-2deg)}
+html.motion-ready .crew__left h2.text-reveal.text-in .motion-word{animation-duration:.46s}
+html.motion-ready .p-card.in:hover{transform:perspective(900px) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg)) translateY(-7px) scale(1.015);box-shadow:9px 15px 0 #000;filter:none}
+html.motion-ready .p-card.in:hover .p-card__img img{transform:translateZ(18px) scale(1.055)}
+html.motion-ready .p-card__img::after{content:"";position:absolute;inset:-25% auto -25% -65%;width:38%;z-index:1;pointer-events:none;opacity:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,.56),transparent);transform:skewX(-18deg)}
+html.motion-ready .p-card.in:hover .p-card__img::after{opacity:1;animation:vinyl-glint .72s ease-out both}
+html.motion-ready .c-card[data-reveal].in:hover{transform:translateY(-8px) rotate(-1.2deg) scale(1.02);filter:none}
+html.motion-ready .c-card[data-reveal].in:hover>img{transform:scale(1.075) rotate(1deg)}
+html.motion-ready .c-card[data-reveal].in:hover .c-card__crown{transform:rotate(9deg) translateY(-3px);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+html.motion-ready .c-card[data-reveal].in:hover .c-card__body em{transform:translateX(5px)}
+html.motion-ready .c-card__body em{transition:transform .2s ease}
+html.motion-ready .section-head__link:hover span{display:inline-block;animation:arrow-nudge .48s ease-in-out infinite alternate}
+html.motion-ready .btn-lime:hover{filter:drop-shadow(5px 5px 0 rgba(200,255,0,.24))}
+
+@keyframes kinetic-word-in{
+  0%{opacity:0;transform:translateY(.62em) rotate(2deg);filter:blur(4px)}
+  72%{opacity:1;transform:translateY(-.06em) rotate(-.5deg);filter:blur(0)}
+  100%{opacity:1;transform:translateY(0) rotate(0);filter:blur(0)}
+}
+@keyframes vinyl-glint{
+  0%{left:-65%;opacity:0}
+  15%{opacity:.8}
+  100%{left:135%;opacity:0}
+}
+@keyframes arrow-nudge{from{transform:translateX(0)}to{transform:translateX(4px)}}
+@media(prefers-reduced-motion:reduce){
+  html.motion-ready [data-reveal],html.motion-ready [data-reveal].in{filter:none;transition:none}
+  html.motion-ready .motion-word{opacity:1;transform:none;filter:none;animation:none}
+  html.motion-ready .p-card.in:hover,html.motion-ready .c-card[data-reveal].in:hover{transform:none;box-shadow:6px 6px 0 #000}
+  html.motion-ready .p-card.in:hover .p-card__img img,html.motion-ready .c-card[data-reveal].in:hover>img{transform:none}
 }
