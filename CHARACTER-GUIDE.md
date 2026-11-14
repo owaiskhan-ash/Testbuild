@@ -1,7 +1,7 @@
-# CHOMPKIT Character Bible — Monsoon Mischief
+# REDPOLY Character Bible — Monsoon Mischief
 
 ## Creative direction
-Redesign all four dolls as original, collectible creature mascots with the fun, readable appeal of a creature-collecting adventure game. **Do not copy Pokémon or any other existing franchise**—no recognizable species, silhouettes, markings, poses, logos, Poké Balls, or signature motifs. Each CHOMPKIT creature must have its own unmistakable silhouette and exact repeatable model details.
+Redesign all four dolls as original, collectible creature mascots with the fun, readable appeal of a creature-collecting adventure game. **Do not copy Pokémon or any other existing franchise**—no recognizable species, silhouettes, markings, poses, logos, Poké Balls, or signature motifs. Each REDPOLY creature must have its own unmistakable silhouette and exact repeatable model details.
 
 The Indian connection is through the names, monsoon/night/nature palette, and contemporary warmth—not costume shorthand. Avoid sacred/deity/temple imagery, religious symbols, flags, and stereotyped human clothing.
 

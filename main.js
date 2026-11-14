@@ -1,4 +1,4 @@
-/* CHOMPKIT interactions plus expressive, reduced-motion-aware movement. */
+/* REDPOLY interactions plus expressive, reduced-motion-aware movement. */
 (function () {
   var root = document.documentElement;
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
