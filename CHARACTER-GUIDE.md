@@ -46,4 +46,4 @@ The Indian connection is through the names, monsoon/night/nature palette, and co
 ## Production checklist
 1. Generate one canonical full-body transparent PNG per character, using only its exact definition above.
 2. Review silhouette, feature counts, palette and alpha channel against this guide before use.
-3. Reuse those four master PNGs everywhere in the site; packaging and collection designs may add graphic framing around the unchanged master art, never redraw the figure.
+3. Reuse those four master PNGs everywhere in the site; packaging and collection designs may add graphic framing around the unchanged master art, never redraw the figure. The footer ensemble is the only approved secondary character rendering and must stay faithful to all four reference masters.
