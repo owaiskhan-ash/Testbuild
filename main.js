@@ -30,27 +30,69 @@
     });
   }
 
-  // Wipe toward the adjacent character's theme color before navigating between product pages.
+  // Warm the adjacent page and its large hero art on intent so the color wipe never lands on an unloaded screen.
   var productPagerLinks = document.querySelectorAll('.char-product-pager a[data-transition-color]');
   var supportsColorWipe = window.CSS && window.CSS.supports && window.CSS.supports('clip-path', 'circle(1px at 50% 50%)');
-  if (!reduceMotion && supportsColorWipe && productPagerLinks.length) {
-    var pageWipeStarted = false;
-    productPagerLinks.forEach(function (link) {
-      link.addEventListener('click', function (event) {
-        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target === '_blank' || link.hasAttribute('download')) return;
-        var destination = new URL(link.href, window.location.href);
-        if (destination.origin !== window.location.origin || pageWipeStarted) return;
-        event.preventDefault();
-        pageWipeStarted = true;
-        var wipe = document.createElement('div');
-        wipe.className = 'char-page-color-wipe';
-        wipe.setAttribute('aria-hidden', 'true');
-        wipe.style.setProperty('--wipe-color', link.getAttribute('data-transition-color'));
-        wipe.style.setProperty('--wipe-origin', link.getAttribute('data-transition-direction') === 'previous' ? '0% 50%' : '100% 50%');
-        document.body.appendChild(wipe);
-        window.setTimeout(function () { window.location.assign(destination.href); }, 500);
+  if (productPagerLinks.length) {
+    var pagePreloads = Object.create(null);
+    function prepareProductPage(link) {
+      var href = link.href;
+      if (pagePreloads[href]) return pagePreloads[href];
+      var pageHint = document.createElement('link');
+      pageHint.rel = 'prefetch';
+      pageHint.href = href;
+      document.head.appendChild(pageHint);
+      pagePreloads[href] = new Promise(function (resolve) {
+        var image = new Image();
+        image.decoding = 'async';
+        if ('fetchPriority' in image) image.fetchPriority = 'high';
+        function imageReady() {
+          if (typeof image.decode === 'function') image.decode().then(resolve, resolve);
+          else resolve();
+        }
+        image.onload = imageReady;
+        image.onerror = resolve;
+        image.src = link.getAttribute('data-transition-image');
+        if (image.complete && image.naturalWidth) imageReady();
       });
+      return pagePreloads[href];
+    }
+
+    productPagerLinks.forEach(function (link) {
+      link.addEventListener('pointerenter', function () { prepareProductPage(link); }, { once: true });
+      link.addEventListener('focus', function () { prepareProductPage(link); }, { once: true });
+      link.addEventListener('touchstart', function () { prepareProductPage(link); }, { once: true, passive: true });
     });
+
+    if (!reduceMotion && supportsColorWipe) {
+      var pageWipeStarted = false;
+      productPagerLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target === '_blank' || link.hasAttribute('download')) return;
+          var destination = new URL(link.href, window.location.href);
+          if (destination.origin !== window.location.origin || pageWipeStarted) return;
+          event.preventDefault();
+          pageWipeStarted = true;
+          var wipe = document.createElement('div');
+          wipe.className = 'char-page-color-wipe';
+          wipe.setAttribute('aria-hidden', 'true');
+          wipe.style.setProperty('--wipe-color', link.getAttribute('data-transition-color'));
+          wipe.style.setProperty('--wipe-origin', link.getAttribute('data-transition-direction') === 'previous' ? '0% 50%' : '100% 50%');
+          document.body.appendChild(wipe);
+          var wipeFinished = new Promise(function (resolve) {
+            var fallback = window.setTimeout(resolve, 650);
+            wipe.addEventListener('animationend', function () {
+              window.clearTimeout(fallback);
+              resolve();
+            }, { once: true });
+          });
+          prepareProductPage(link);
+          wipeFinished.then(function () {
+            window.location.assign(destination.href);
+          });
+        });
+      });
+    }
   }
 
   var toast = document.getElementById('toast');
