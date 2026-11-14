@@ -1,10 +1,10 @@
 # CHOMPKIT — Big Attitude
 
-Collectible vinyl figures landing page (static HTML + CSS + JS, no build step).
+Static collectible-vinyl landing page, built with HTML, CSS and JavaScript (no build step).
 
-- `index.html` – page markup (hero, limited edition, featured figures, collections, crew footer)
-- `styles.css` – styles (lime `#C8FF00` / orange `#FF6B1A` / black / cream, Anton + Archivo + Permanent Marker)
-- `main.js` – add-to-cart toast, crew form, scroll reveal
-- `assets/images/chompkit/` – exact PNG crops from the reference screenshot (hero boxes, Chomp Forever hero, 4 product cards, 3 collection cards)
+- `index.html` – hero, limited edition, featured figures, collections and crew/footer sections
+- `styles.css` – responsive layout, colors, 3D-image labels, product and collection overlays
+- `main.js` – add-to-cart feedback, wishlist hearts, crew form and scroll reveal
+- `assets/images/chompkit/` – soft 3D PNG artwork for the four figures, hero packaging and collection cards
 
-Open `index.html` in a browser, or serve with any static server (e.g. `npx serve .` / `python3 -m http.server`).
+The layout, colors and copy remain unchanged while the imagery has a subtle soft-3D vinyl-toy finish. Open `index.html` directly or serve with any static server (for example `python3 -m http.server`).

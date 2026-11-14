@@ -25,6 +25,17 @@
     });
   });
 
+  // Wishlist hearts
+  document.querySelectorAll('.heart').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var favorite = btn.classList.toggle('is-favorite');
+      btn.setAttribute('aria-pressed', favorite ? 'true' : 'false');
+      var card = btn.closest('.p-card');
+      var name = card && card.querySelector('h3') ? card.querySelector('h3').textContent : 'FIGURE';
+      showToast(favorite ? name + ' added to wishlist' : name + ' removed from wishlist');
+    });
+  });
+
   // Crew form
   var form = document.getElementById('crewForm');
   if (form) {

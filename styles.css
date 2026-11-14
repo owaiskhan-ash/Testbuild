@@ -178,3 +178,37 @@ button{font-family:inherit;cursor:pointer}
   .hero__boxes{height:280px}
   .box--chomp-mini{display:none}
 }
+
+/* Soft-3D image treatments and details kept as live HTML */
+.box{isolation:isolate}
+.box>img{position:absolute;inset:0;z-index:0}
+.box__label{position:absolute;left:0;right:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:5px 9px;color:#fff;background:rgba(8,8,8,.88);font-family:'Archivo',sans-serif;text-transform:uppercase}
+.box__label--top{top:0;font-size:9px;font-weight:900;letter-spacing:1.3px}
+.box__label--top em{font-style:normal;color:var(--lime);font-size:11px}
+.box__label--bottom{bottom:0;align-items:flex-start;flex-direction:column;gap:1px}
+.box__label--bottom strong{font-family:'Anton',sans-serif;font-size:20px;line-height:1;color:var(--lime);letter-spacing:.5px}
+.box__label--bottom small{font-size:8px;font-weight:900;letter-spacing:.7px;color:#fff}
+.p-card__img{position:relative;overflow:hidden;aspect-ratio:290/320}
+.p-card__img img{height:100%;object-fit:contain;background:var(--cream);padding:2px}
+.stock{position:absolute;top:10px;left:10px;z-index:2;padding:5px 8px;background:var(--lime);color:var(--black);font-size:9px;line-height:1;font-weight:900;letter-spacing:.6px;text-transform:uppercase;clip-path:polygon(2% 0,100% 4%,96% 100%,0 92%)}
+.heart{position:absolute;top:8px;right:8px;z-index:2;width:30px;height:30px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--black);display:grid;place-items:center;box-shadow:0 1px 5px rgba(0,0,0,.18)}
+.heart svg{width:17px;height:17px}
+.heart:hover,.heart.is-favorite{color:var(--orange)}
+.heart.is-favorite svg path{fill:var(--orange)}
+.card-crown{position:absolute;top:7px;left:50%;z-index:2;transform:translateX(-50%);color:var(--orange);filter:drop-shadow(0 1px 1px rgba(0,0,0,.25))}
+.card-crown svg{display:block;width:28px;height:28px}
+.c-card{position:relative;isolation:isolate;aspect-ratio:410/420;color:var(--black)}
+.c-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.c-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.04) 0%,transparent 35%,rgba(0,0,0,.06) 58%,rgba(0,0,0,.58) 100%)}
+.c-card--vinyl{color:var(--black)}
+.c-card--art,.c-card--accessories{color:#fff}
+.c-card__num{position:absolute;top:14px;left:16px;font-family:'Anton',sans-serif;font-size:42px;line-height:1;letter-spacing:-1px;color:var(--black);text-shadow:0 1px rgba(255,255,255,.35)}
+.c-card__crown{position:absolute;top:14px;right:14px;color:var(--orange);transform:rotate(-6deg)}
+.c-card__crown svg{display:block;width:31px;height:31px}
+.c-card__body{position:absolute;left:18px;right:18px;bottom:17px;display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.c-card__body strong{font-family:'Anton',sans-serif;font-size:clamp(21px,2.2vw,30px);line-height:1;text-transform:uppercase;letter-spacing:.2px}
+.c-card__body small{font-size:11px;font-weight:700;line-height:1.35}
+.c-card__body em{margin-top:5px;font-style:normal;font-size:10px;font-weight:900;letter-spacing:.8px;text-transform:uppercase}
+.c-card:hover .c-card__body em{text-decoration:underline}
+@media(max-width:1024px){.c-card{aspect-ratio:410/420}}
+@media(max-width:640px){.c-card__num{font-size:36px}.c-card__body{left:14px;right:14px;bottom:13px}.c-card__body small{font-size:10px}}
