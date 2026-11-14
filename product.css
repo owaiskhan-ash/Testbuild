@@ -21,15 +21,13 @@ body.creature-page--noor .char-spark--four{width:11px;height:11px}
 .char-hero::after{content:"";position:absolute;inset:auto -5% -44px;height:125px;z-index:2;background:var(--character-story);clip-path:polygon(0 48%,5% 35%,10% 53%,17% 27%,24% 52%,31% 30%,39% 55%,47% 24%,55% 50%,63% 31%,70% 55%,78% 28%,86% 51%,94% 30%,100% 48%,100% 100%,0 100%)}
 .char-hero__texture{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 10% 14%,var(--character-accent-halo),transparent 28%),linear-gradient(90deg,var(--character-soft-shade),transparent 62%)}
 .char-hero__copy{position:relative;z-index:3;max-width:570px;padding:24px 0 38px}
-.char-breadcrumb-row{display:flex;align-items:center;justify-content:space-between;gap:14px;max-width:570px}
+.char-hero__topline{position:absolute;z-index:4;top:58px;left:max(clamp(20px,5vw,76px),calc((100vw - 1440px)/2 + clamp(20px,5vw,76px)));right:max(clamp(20px,5vw,76px),calc((100vw - 1440px)/2 + clamp(20px,5vw,76px)));display:flex;align-items:center;justify-content:space-between;gap:14px}
 .char-breadcrumb{display:inline-flex;gap:10px;align-items:center;font-size:9px;font-weight:900;letter-spacing:1.8px;color:var(--character-muted)}
 .char-breadcrumb span{color:var(--character-accent)}
 .char-product-pager{display:flex;align-items:center;gap:5px;flex:none}
 .char-product-pager a{display:grid;place-items:center;width:27px;height:27px;border:1px solid var(--character-muted-border);border-radius:2px;color:var(--character-accent);font:800 17px/1 'Archivo',sans-serif;transition:color .18s ease,background-color .18s ease,border-color .18s ease,transform .18s ease}
 .char-product-pager a:hover{transform:translateY(-2px);border-color:var(--character-accent);background:var(--character-accent);color:var(--character-ink)}
 .char-product-pager a:focus-visible{outline:2px solid var(--character-light);outline-offset:3px}
-.char-page-color-wipe{position:fixed;inset:0;z-index:99999;pointer-events:none;background:var(--wipe-color);clip-path:circle(0 at var(--wipe-origin));animation:char-page-color-wipe .48s cubic-bezier(.7,0,.2,1) forwards}
-@keyframes char-page-color-wipe{to{clip-path:circle(150vmax at var(--wipe-origin))}}
 .char-kicker{display:flex;align-items:center;gap:9px;margin-top:54px;font-size:11px;font-weight:900;letter-spacing:3px;color:var(--character-accent)}
 .char-kicker__spark{font-size:22px;line-height:1}
 .char-hero h1{position:relative;margin-top:16px;font-family:'Anton',sans-serif;font-size:clamp(98px,15vw,202px);line-height:.69;letter-spacing:-2px;text-transform:uppercase;color:var(--character-light);text-shadow:7px 8px 0 var(--character-text-shadow)}
@@ -148,6 +146,7 @@ html.motion-ready .char-reveal.char-reveal--in{opacity:1;transform:none;filter:b
   .char-nav nav>a:first-child,.char-nav nav>a:nth-child(2){display:none}
   .char-nav__back{font-size:9px!important;padding:9px 10px}
   .char-hero{grid-template-columns:1fr;gap:0;min-height:0;padding:24px 21px 94px}
+  .char-hero__topline{top:27px;left:21px;right:21px}
   .char-hero__copy{padding:12px 0 0}
   .char-kicker{margin-top:34px}
   .char-hero h1{font-size:clamp(105px,25vw,165px)}
