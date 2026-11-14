@@ -1,12 +1,11 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/stories", "destination": "/stories/index.html" },
-    { "source": "/barsaat", "destination": "/products/barsaat.html" },
-    { "source": "/agni", "destination": "/products/agni.html" },
-    { "source": "/noor", "destination": "/products/noor.html" },
-    { "source": "/aarav", "destination": "/products/aarav.html" }
+    { "source": "/", "destination": "/index" },
+    { "source": "/barsaat", "destination": "/products/barsaat" },
+    { "source": "/agni", "destination": "/products/agni" },
+    { "source": "/noor", "destination": "/products/noor" },
+    { "source": "/aarav", "destination": "/products/aarav" }
   ],
   "headers": [
     {
