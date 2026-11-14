@@ -40,8 +40,8 @@ button{font-family:inherit;cursor:pointer}
 .hero__feats span{font-size:10px;font-weight:800;letter-spacing:.8px;color:#EDEDED;text-transform:uppercase;line-height:1.2}
 .hero__right{position:relative}
 .hero__boxes{position:relative;height:360px}
-.box{position:absolute;margin:0;border:3px solid #1c1c1c;box-shadow:8px 8px 0 rgba(0,0,0,.55);background:#111;overflow:hidden}
-.box img{width:100%;height:100%;object-fit:cover}
+.box{position:absolute;margin:0;border:0;box-shadow:none;background:transparent;overflow:visible;filter:drop-shadow(8px 12px 9px rgba(0,0,0,.42))}
+.box img{display:block;width:100%;height:100%;padding:0;object-fit:contain}
 .hero__side-note{position:absolute;right:-6px;bottom:6px;z-index:4;font-family:'Permanent Marker',cursive;font-size:13px;line-height:1.25;color:#fff;transform:rotate(6deg);text-align:left}
 .hero__side-note svg{width:22px;height:22px;display:block;margin-top:6px;color:var(--lime)}
 .hero__rocks{position:relative;height:44px;margin-top:18px;background:var(--black);clip-path:polygon(0 55%,4% 30%,9% 55%,15% 25%,22% 50%,30% 20%,38% 48%,46% 28%,54% 52%,62% 22%,70% 50%,78% 26%,86% 52%,93% 30%,100% 55%,100% 100%,0 100%);border-top:3px solid #222}
@@ -278,10 +278,10 @@ html.motion-ready .c-card[data-reveal].in:hover>img{transform:scale(1.045)}
 }
 
 /* New Monsoon Mischief canonical characters: the same master PNGs are reused site-wide. */
-.box--barsaat{left:0;top:42px;width:36%;height:270px;z-index:2;transform:rotate(-2deg);border-color:#19C9D2;background:linear-gradient(145deg,#123234,#101820)}
-.box--agni{left:32%;top:12px;width:36%;height:286px;z-index:3;transform:rotate(.8deg);border-color:#FF6B1A;background:linear-gradient(145deg,#43180D,#1B1011)}
-.box--noor{right:0;top:42px;width:36%;height:270px;z-index:2;transform:rotate(2deg);border-color:#7955E8;background:linear-gradient(145deg,#191744,#11111D)}
-.box--barsaat>img,.box--agni>img,.box--noor>img{padding:38px 9px 42px;object-fit:contain}
+.box--barsaat{left:0;top:38px;width:34%;height:320px;z-index:2;transform:rotate(-2deg)}
+.box--agni{left:32%;top:0;width:36%;height:350px;z-index:3;transform:rotate(.8deg)}
+.box--noor{right:0;top:40px;width:32%;height:320px;z-index:2;transform:rotate(2deg)}
+.box--barsaat>img,.box--agni>img,.box--noor>img{padding:0;object-fit:contain}
 .box--barsaat .box__label--bottom strong{color:#19C9D2}
 .box--agni .box__label--bottom strong{color:#FF6B1A}
 .box--noor .box__label--bottom strong{color:#B29BFF}
