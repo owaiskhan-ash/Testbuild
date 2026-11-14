@@ -22,7 +22,7 @@
 @keyframes hero-orbit-glow{0%,100%{opacity:.65;transform:scale(.98)}50%{opacity:1;transform:scale(1.035)}}
 @keyframes stamp-enter{0%{opacity:0;transform:translate3d(0,20px,0) rotate(-8deg) scale(.75)}75%{opacity:1;transform:translate3d(0,-3px,0) rotate(12deg) scale(1.04)}100%{opacity:1;transform:translate3d(0,0,0) rotate(9deg) scale(1)}}
 @keyframes stamp-float{0%,100%{transform:translateY(0) rotate(9deg)}50%{transform:translateY(-6px) rotate(6deg)}}
-.stories-kicker,.stories-overline,.reader-kicker,.reader-page-label{font-size:9px;font-weight:900;letter-spacing:1.6px;color:var(--lime)}
+.stories-kicker,.stories-overline,.reader-kicker{font-size:9px;font-weight:900;letter-spacing:1.6px;color:var(--lime)}
 .stories-kicker{position:relative;z-index:1;display:flex;align-items:center;gap:11px}
 .stories-kicker i{width:24px;height:2px;background:var(--orange);transform:rotate(-18deg)}
 .stories-hero h1{position:relative;z-index:1;margin-top:16px;font:clamp(46px,8vw,88px)/.9 'Anton',sans-serif;letter-spacing:.2px;color:#fff}
