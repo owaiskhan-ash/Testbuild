@@ -1,5 +1,11 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/barsaat", "destination": "/products/barsaat.html" },
+    { "source": "/agni", "destination": "/products/agni.html" },
+    { "source": "/noor", "destination": "/products/noor.html" },
+    { "source": "/aarav", "destination": "/products/aarav.html" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
