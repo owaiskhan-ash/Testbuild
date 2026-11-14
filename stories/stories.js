@@ -17,12 +17,39 @@ let activeManifest = null;
 let activePage = 0;
 let opener = null;
 let touchStartX = null;
+const manifestRequests = new Map();
+const prefetchedPages = new Set();
 
 function make(tag, className, text) {
   const node = document.createElement(tag);
   if (className) node.className = className;
   if (text !== undefined) node.textContent = text;
   return node;
+}
+
+function getIssueManifest(issue) {
+  if (!manifestRequests.has(issue.id)) {
+    const request = fetch(issue.manifest).then(response => {
+      if (!response.ok) throw new Error(`Issue data returned ${response.status}`);
+      return response.json();
+    }).catch(error => {
+      manifestRequests.delete(issue.id);
+      throw error;
+    });
+    manifestRequests.set(issue.id, request);
+  }
+  return manifestRequests.get(issue.id);
+}
+
+function prefetchNextPage() {
+  if (!activeManifest || activePage >= activeManifest.pages.length - 1) return;
+  const src = activeManifest.pages[activePage + 1].image;
+  if (prefetchedPages.has(src)) return;
+  prefetchedPages.add(src);
+  const image = new Image();
+  image.decoding = 'async';
+  image.fetchPriority = 'low';
+  image.src = src;
 }
 
 function renderIssueCard(issue) {
@@ -36,6 +63,8 @@ function renderIssueCard(issue) {
   image.src = issue.cover;
   image.alt = `Preview artwork for REDPOLY Issue ${issue.number}: ${issue.title}`;
   image.loading = 'lazy';
+  image.decoding = 'async';
+  image.fetchPriority = 'low';
   cover.append(image, make('span', 'issue-card__number', `ISSUE ${issue.number}`), make('span', 'issue-card__cover-label', 'THE ORIGIN ISSUE'));
 
   const body = make('span', 'issue-card__body');
@@ -79,8 +108,11 @@ function renderPage() {
   const total = activeManifest.pages.length;
   const pageNumber = String(current).padStart(2, '0');
 
-  readerImage.src = page.image;
   readerImage.alt = page.alt || `${activeManifest.title}, page ${current}`;
+  readerImage.decoding = 'async';
+  readerImage.fetchPriority = 'high';
+  readerImage.onload = prefetchNextPage;
+  readerImage.src = page.image;
   readerPageCount.textContent = `PAGE ${pageNumber} / ${String(total).padStart(2, '0')}`;
   readerProgress.style.width = `${(current / total) * 100}%`;
   prevButtons.forEach(button => { button.disabled = activePage === 0; });
@@ -91,9 +123,7 @@ async function openIssue(issue, pageIndex = 0, trigger = null) {
   if (!issue) return;
   opener = trigger || opener;
   try {
-    const response = await fetch(issue.manifest);
-    if (!response.ok) throw new Error(`Issue data returned ${response.status}`);
-    activeManifest = await response.json();
+    activeManifest = await getIssueManifest(issue);
     activeIssue = issue;
     activePage = Math.min(Math.max(pageIndex, 0), activeManifest.pages.length - 1);
     readerTitle.textContent = activeManifest.title;
@@ -147,6 +177,7 @@ async function startStories() {
     if (!response.ok) throw new Error(`Catalog returned ${response.status}`);
     catalog = await response.json();
     renderCatalog(catalog);
+    catalog.forEach(issue => { getIssueManifest(issue).catch(() => {}); });
     const params = new URLSearchParams(window.location.search);
     const requestedIssue = catalog.find(issue => issue.id === params.get('issue'));
     if (requestedIssue) {

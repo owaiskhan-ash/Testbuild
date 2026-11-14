@@ -4,11 +4,29 @@
   "title": "The Night the Sky Said Hello",
   "subtitle": "Four mysterious friends meet on one rainy night, in six cinematic comic pages.",
   "pages": [
-    { "image": "/comics/issue-001-origin/pages/page-01.png", "alt": "Page 1: A stormy night, Barsaat splashes into being, sees a funny reflection, and spots an orange spark." },
-    { "image": "/comics/issue-001-origin/pages/page-02.png", "alt": "Page 2: Agni makes a soft splash, meets Barsaat, and discovers a glowing path with him." },
-    { "image": "/comics/issue-001-origin/pages/page-03.png", "alt": "Page 3: Noor floats out of the storm and leads Barsaat and Agni up the hill." },
-    { "image": "/comics/issue-001-origin/pages/page-04.png", "alt": "Page 4: Aarav rolls into the story, stops a boulder, and meets the other three." },
-    { "image": "/comics/issue-001-origin/pages/page-05.png", "alt": "Page 5: The four friends work together to guide a magical raindrop safely through the stream." },
-    { "image": "/comics/issue-001-origin/pages/page-06.png", "alt": "Page 6: The four friends celebrate their first adventure as the storm clears at sunrise." }
+    {
+      "image": "/comics/issue-001-origin/pages/page-01.webp?v=issue01-webp-20261114",
+      "alt": "Page 1: A stormy night, Barsaat splashes into being, sees a funny reflection, and spots an orange spark."
+    },
+    {
+      "image": "/comics/issue-001-origin/pages/page-02.webp?v=issue01-webp-20261114",
+      "alt": "Page 2: Agni makes a soft splash, meets Barsaat, and discovers a glowing path with him."
+    },
+    {
+      "image": "/comics/issue-001-origin/pages/page-03.webp?v=issue01-webp-20261114",
+      "alt": "Page 3: Noor floats out of the storm and leads Barsaat and Agni up the hill."
+    },
+    {
+      "image": "/comics/issue-001-origin/pages/page-04.webp?v=issue01-webp-20261114",
+      "alt": "Page 4: Aarav rolls into the story, stops a boulder, and meets the other three."
+    },
+    {
+      "image": "/comics/issue-001-origin/pages/page-05.webp?v=issue01-webp-20261114",
+      "alt": "Page 5: The four friends work together to guide a magical raindrop safely through the stream."
+    },
+    {
+      "image": "/comics/issue-001-origin/pages/page-06.webp?v=issue01-webp-20261114",
+      "alt": "Page 6: The four friends celebrate their first adventure as the storm clears at sunrise."
+    }
   ]
 }
